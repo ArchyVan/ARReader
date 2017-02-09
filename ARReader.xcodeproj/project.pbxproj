@@ -1,0 +1,585 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		81889B2C1E4C388C00ADBE9A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81889B2B1E4C388C00ADBE9A /* Assets.xcassets */; };
+		81889B2F1E4C388C00ADBE9A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81889B2D1E4C388C00ADBE9A /* LaunchScreen.storyboard */; };
+		81889B3A1E4C388C00ADBE9A /* ARReaderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 81889B391E4C388C00ADBE9A /* ARReaderTests.m */; };
+		81889B721E4C390C00ADBE9A /* ARAsyncLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 81889B471E4C390C00ADBE9A /* ARAsyncLayer.m */; };
+		81889B731E4C390C00ADBE9A /* ARDispatchQueuePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 81889B491E4C390C00ADBE9A /* ARDispatchQueuePool.m */; };
+		81889B741E4C390C00ADBE9A /* ARSentinel.m in Sources */ = {isa = PBXBuildFile; fileRef = 81889B4B1E4C390C00ADBE9A /* ARSentinel.m */; };
+		81889B751E4C390C00ADBE9A /* ARTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 81889B4D1E4C390C00ADBE9A /* ARTransaction.m */; };
+		81889B761E4C390C00ADBE9A /* ARTextCursor.m in Sources */ = {isa = PBXBuildFile; fileRef = 81889B511E4C390C00ADBE9A /* ARTextCursor.m */; };
+		81889B771E4C390C00ADBE9A /* ARTextEffectWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 81889B531E4C390C00ADBE9A /* ARTextEffectWindow.m */; };
+		81889B781E4C390C00ADBE9A /* ARTextMagnifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 81889B551E4C390C00ADBE9A /* ARTextMagnifier.m */; };
+		81889B791E4C390C00ADBE9A /* ARTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81889B571E4C390C00ADBE9A /* ARTextView.m */; };
+		81889B7A1E4C390C00ADBE9A /* ARComposingUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 81889B5A1E4C390C00ADBE9A /* ARComposingUtils.m */; };
+		81889B7B1E4C390C00ADBE9A /* ARLineLayerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 81889B5C1E4C390C00ADBE9A /* ARLineLayerDelegate.m */; };
+		81889B7C1E4C390C00ADBE9A /* ARLineManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 81889B5E1E4C390C00ADBE9A /* ARLineManager.m */; };
+		81889B7D1E4C390C00ADBE9A /* ARTextUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 81889B601E4C390C00ADBE9A /* ARTextUtilities.m */; };
+		81889B7E1E4C390C00ADBE9A /* ARPageData.m in Sources */ = {isa = PBXBuildFile; fileRef = 81889B631E4C390C00ADBE9A /* ARPageData.m */; };
+		81889B7F1E4C390C00ADBE9A /* ARPageParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 81889B661E4C390C00ADBE9A /* ARPageParser.m */; };
+		81889B801E4C390C00ADBE9A /* UIView+ComposingKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 81889B681E4C390C00ADBE9A /* UIView+ComposingKit.m */; };
+		81889B811E4C390C00ADBE9A /* ARAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 81889B6B1E4C390C00ADBE9A /* ARAppDelegate.m */; };
+		81889B821E4C390C00ADBE9A /* ARReaderCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 81889B6D1E4C390C00ADBE9A /* ARReaderCenter.m */; };
+		81889B831E4C390C00ADBE9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 81889B6E1E4C390C00ADBE9A /* main.m */; };
+		81889B841E4C390C00ADBE9A /* sishen.txt in Resources */ = {isa = PBXBuildFile; fileRef = 81889B701E4C390C00ADBE9A /* sishen.txt */; };
+		81889B851E4C390C00ADBE9A /* test.txt in Resources */ = {isa = PBXBuildFile; fileRef = 81889B711E4C390C00ADBE9A /* test.txt */; };
+		81889B871E4C3BE500ADBE9A /* ARReaderParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 81889B861E4C3BE500ADBE9A /* ARReaderParserTest.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		81889B361E4C388C00ADBE9A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 81889B141E4C388B00ADBE9A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 81889B1B1E4C388C00ADBE9A;
+			remoteInfo = ARReader;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		81889B1C1E4C388C00ADBE9A /* ARReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		81889B2B1E4C388C00ADBE9A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		81889B2E1E4C388C00ADBE9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		81889B301E4C388C00ADBE9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		81889B351E4C388C00ADBE9A /* ARReaderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ARReaderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		81889B391E4C388C00ADBE9A /* ARReaderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ARReaderTests.m; sourceTree = "<group>"; };
+		81889B3B1E4C388C00ADBE9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		81889B461E4C390C00ADBE9A /* ARAsyncLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARAsyncLayer.h; sourceTree = "<group>"; };
+		81889B471E4C390C00ADBE9A /* ARAsyncLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARAsyncLayer.m; sourceTree = "<group>"; };
+		81889B481E4C390C00ADBE9A /* ARDispatchQueuePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARDispatchQueuePool.h; sourceTree = "<group>"; };
+		81889B491E4C390C00ADBE9A /* ARDispatchQueuePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARDispatchQueuePool.m; sourceTree = "<group>"; };
+		81889B4A1E4C390C00ADBE9A /* ARSentinel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARSentinel.h; sourceTree = "<group>"; };
+		81889B4B1E4C390C00ADBE9A /* ARSentinel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARSentinel.m; sourceTree = "<group>"; };
+		81889B4C1E4C390C00ADBE9A /* ARTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARTransaction.h; sourceTree = "<group>"; };
+		81889B4D1E4C390C00ADBE9A /* ARTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARTransaction.m; sourceTree = "<group>"; };
+		81889B4E1E4C390C00ADBE9A /* ARComposing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARComposing.h; sourceTree = "<group>"; };
+		81889B501E4C390C00ADBE9A /* ARTextCursor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARTextCursor.h; sourceTree = "<group>"; };
+		81889B511E4C390C00ADBE9A /* ARTextCursor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARTextCursor.m; sourceTree = "<group>"; };
+		81889B521E4C390C00ADBE9A /* ARTextEffectWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARTextEffectWindow.h; sourceTree = "<group>"; };
+		81889B531E4C390C00ADBE9A /* ARTextEffectWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARTextEffectWindow.m; sourceTree = "<group>"; };
+		81889B541E4C390C00ADBE9A /* ARTextMagnifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARTextMagnifier.h; sourceTree = "<group>"; };
+		81889B551E4C390C00ADBE9A /* ARTextMagnifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARTextMagnifier.m; sourceTree = "<group>"; };
+		81889B561E4C390C00ADBE9A /* ARTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARTextView.h; sourceTree = "<group>"; };
+		81889B571E4C390C00ADBE9A /* ARTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARTextView.m; sourceTree = "<group>"; };
+		81889B591E4C390C00ADBE9A /* ARComposingUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARComposingUtils.h; sourceTree = "<group>"; };
+		81889B5A1E4C390C00ADBE9A /* ARComposingUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARComposingUtils.m; sourceTree = "<group>"; };
+		81889B5B1E4C390C00ADBE9A /* ARLineLayerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARLineLayerDelegate.h; sourceTree = "<group>"; };
+		81889B5C1E4C390C00ADBE9A /* ARLineLayerDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARLineLayerDelegate.m; sourceTree = "<group>"; };
+		81889B5D1E4C390C00ADBE9A /* ARLineManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARLineManager.h; sourceTree = "<group>"; };
+		81889B5E1E4C390C00ADBE9A /* ARLineManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARLineManager.m; sourceTree = "<group>"; };
+		81889B5F1E4C390C00ADBE9A /* ARTextUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARTextUtilities.h; sourceTree = "<group>"; };
+		81889B601E4C390C00ADBE9A /* ARTextUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARTextUtilities.m; sourceTree = "<group>"; };
+		81889B621E4C390C00ADBE9A /* ARPageData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARPageData.h; sourceTree = "<group>"; };
+		81889B631E4C390C00ADBE9A /* ARPageData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARPageData.m; sourceTree = "<group>"; };
+		81889B651E4C390C00ADBE9A /* ARPageParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARPageParser.h; sourceTree = "<group>"; };
+		81889B661E4C390C00ADBE9A /* ARPageParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARPageParser.m; sourceTree = "<group>"; };
+		81889B671E4C390C00ADBE9A /* UIView+ComposingKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ComposingKit.h"; sourceTree = "<group>"; };
+		81889B681E4C390C00ADBE9A /* UIView+ComposingKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ComposingKit.m"; sourceTree = "<group>"; };
+		81889B6A1E4C390C00ADBE9A /* ARAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARAppDelegate.h; sourceTree = "<group>"; };
+		81889B6B1E4C390C00ADBE9A /* ARAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARAppDelegate.m; sourceTree = "<group>"; };
+		81889B6C1E4C390C00ADBE9A /* ARReaderCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARReaderCenter.h; sourceTree = "<group>"; };
+		81889B6D1E4C390C00ADBE9A /* ARReaderCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARReaderCenter.m; sourceTree = "<group>"; };
+		81889B6E1E4C390C00ADBE9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		81889B701E4C390C00ADBE9A /* sishen.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sishen.txt; sourceTree = "<group>"; };
+		81889B711E4C390C00ADBE9A /* test.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.txt; sourceTree = "<group>"; };
+		81889B861E4C3BE500ADBE9A /* ARReaderParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARReaderParserTest.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		81889B191E4C388C00ADBE9A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		81889B321E4C388C00ADBE9A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		81889B131E4C388B00ADBE9A = {
+			isa = PBXGroup;
+			children = (
+				81889B1E1E4C388C00ADBE9A /* ARReader */,
+				81889B381E4C388C00ADBE9A /* ARReaderTests */,
+				81889B1D1E4C388C00ADBE9A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		81889B1D1E4C388C00ADBE9A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				81889B1C1E4C388C00ADBE9A /* ARReader.app */,
+				81889B351E4C388C00ADBE9A /* ARReaderTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		81889B1E1E4C388C00ADBE9A /* ARReader */ = {
+			isa = PBXGroup;
+			children = (
+				81889B441E4C390C00ADBE9A /* ARComposing */,
+				81889B6F1E4C390C00ADBE9A /* Resources */,
+				81889B691E4C390C00ADBE9A /* Main */,
+				81889B1F1E4C388C00ADBE9A /* Supporting Files */,
+			);
+			path = ARReader;
+			sourceTree = "<group>";
+		};
+		81889B1F1E4C388C00ADBE9A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				81889B2B1E4C388C00ADBE9A /* Assets.xcassets */,
+				81889B2D1E4C388C00ADBE9A /* LaunchScreen.storyboard */,
+				81889B301E4C388C00ADBE9A /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		81889B381E4C388C00ADBE9A /* ARReaderTests */ = {
+			isa = PBXGroup;
+			children = (
+				81889B391E4C388C00ADBE9A /* ARReaderTests.m */,
+				81889B861E4C3BE500ADBE9A /* ARReaderParserTest.m */,
+				81889B3B1E4C388C00ADBE9A /* Info.plist */,
+			);
+			path = ARReaderTests;
+			sourceTree = "<group>";
+		};
+		81889B441E4C390C00ADBE9A /* ARComposing */ = {
+			isa = PBXGroup;
+			children = (
+				81889B4E1E4C390C00ADBE9A /* ARComposing.h */,
+				81889B451E4C390C00ADBE9A /* ARAsyncLayer */,
+				81889B4F1E4C390C00ADBE9A /* ARComposingKit */,
+				81889B581E4C390C00ADBE9A /* ARComposingUtils */,
+				81889B611E4C390C00ADBE9A /* ARPageData */,
+				81889B641E4C390C00ADBE9A /* ARPageParser */,
+			);
+			path = ARComposing;
+			sourceTree = "<group>";
+		};
+		81889B451E4C390C00ADBE9A /* ARAsyncLayer */ = {
+			isa = PBXGroup;
+			children = (
+				81889B461E4C390C00ADBE9A /* ARAsyncLayer.h */,
+				81889B471E4C390C00ADBE9A /* ARAsyncLayer.m */,
+				81889B481E4C390C00ADBE9A /* ARDispatchQueuePool.h */,
+				81889B491E4C390C00ADBE9A /* ARDispatchQueuePool.m */,
+				81889B4A1E4C390C00ADBE9A /* ARSentinel.h */,
+				81889B4B1E4C390C00ADBE9A /* ARSentinel.m */,
+				81889B4C1E4C390C00ADBE9A /* ARTransaction.h */,
+				81889B4D1E4C390C00ADBE9A /* ARTransaction.m */,
+			);
+			path = ARAsyncLayer;
+			sourceTree = "<group>";
+		};
+		81889B4F1E4C390C00ADBE9A /* ARComposingKit */ = {
+			isa = PBXGroup;
+			children = (
+				81889B501E4C390C00ADBE9A /* ARTextCursor.h */,
+				81889B511E4C390C00ADBE9A /* ARTextCursor.m */,
+				81889B521E4C390C00ADBE9A /* ARTextEffectWindow.h */,
+				81889B531E4C390C00ADBE9A /* ARTextEffectWindow.m */,
+				81889B541E4C390C00ADBE9A /* ARTextMagnifier.h */,
+				81889B551E4C390C00ADBE9A /* ARTextMagnifier.m */,
+				81889B561E4C390C00ADBE9A /* ARTextView.h */,
+				81889B571E4C390C00ADBE9A /* ARTextView.m */,
+			);
+			path = ARComposingKit;
+			sourceTree = "<group>";
+		};
+		81889B581E4C390C00ADBE9A /* ARComposingUtils */ = {
+			isa = PBXGroup;
+			children = (
+				81889B591E4C390C00ADBE9A /* ARComposingUtils.h */,
+				81889B5A1E4C390C00ADBE9A /* ARComposingUtils.m */,
+				81889B5B1E4C390C00ADBE9A /* ARLineLayerDelegate.h */,
+				81889B5C1E4C390C00ADBE9A /* ARLineLayerDelegate.m */,
+				81889B5D1E4C390C00ADBE9A /* ARLineManager.h */,
+				81889B5E1E4C390C00ADBE9A /* ARLineManager.m */,
+				81889B5F1E4C390C00ADBE9A /* ARTextUtilities.h */,
+				81889B601E4C390C00ADBE9A /* ARTextUtilities.m */,
+			);
+			path = ARComposingUtils;
+			sourceTree = "<group>";
+		};
+		81889B611E4C390C00ADBE9A /* ARPageData */ = {
+			isa = PBXGroup;
+			children = (
+				81889B621E4C390C00ADBE9A /* ARPageData.h */,
+				81889B631E4C390C00ADBE9A /* ARPageData.m */,
+			);
+			path = ARPageData;
+			sourceTree = "<group>";
+		};
+		81889B641E4C390C00ADBE9A /* ARPageParser */ = {
+			isa = PBXGroup;
+			children = (
+				81889B651E4C390C00ADBE9A /* ARPageParser.h */,
+				81889B661E4C390C00ADBE9A /* ARPageParser.m */,
+				81889B671E4C390C00ADBE9A /* UIView+ComposingKit.h */,
+				81889B681E4C390C00ADBE9A /* UIView+ComposingKit.m */,
+			);
+			path = ARPageParser;
+			sourceTree = "<group>";
+		};
+		81889B691E4C390C00ADBE9A /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				81889B6A1E4C390C00ADBE9A /* ARAppDelegate.h */,
+				81889B6B1E4C390C00ADBE9A /* ARAppDelegate.m */,
+				81889B6C1E4C390C00ADBE9A /* ARReaderCenter.h */,
+				81889B6D1E4C390C00ADBE9A /* ARReaderCenter.m */,
+				81889B6E1E4C390C00ADBE9A /* main.m */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		81889B6F1E4C390C00ADBE9A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				81889B701E4C390C00ADBE9A /* sishen.txt */,
+				81889B711E4C390C00ADBE9A /* test.txt */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		81889B1B1E4C388C00ADBE9A /* ARReader */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 81889B3E1E4C388C00ADBE9A /* Build configuration list for PBXNativeTarget "ARReader" */;
+			buildPhases = (
+				81889B181E4C388C00ADBE9A /* Sources */,
+				81889B191E4C388C00ADBE9A /* Frameworks */,
+				81889B1A1E4C388C00ADBE9A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ARReader;
+			productName = ARReader;
+			productReference = 81889B1C1E4C388C00ADBE9A /* ARReader.app */;
+			productType = "com.apple.product-type.application";
+		};
+		81889B341E4C388C00ADBE9A /* ARReaderTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 81889B411E4C388C00ADBE9A /* Build configuration list for PBXNativeTarget "ARReaderTests" */;
+			buildPhases = (
+				81889B311E4C388C00ADBE9A /* Sources */,
+				81889B321E4C388C00ADBE9A /* Frameworks */,
+				81889B331E4C388C00ADBE9A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				81889B371E4C388C00ADBE9A /* PBXTargetDependency */,
+			);
+			name = ARReaderTests;
+			productName = ARReaderTests;
+			productReference = 81889B351E4C388C00ADBE9A /* ARReaderTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		81889B141E4C388B00ADBE9A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = "Archy Van";
+				TargetAttributes = {
+					81889B1B1E4C388C00ADBE9A = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+					};
+					81889B341E4C388C00ADBE9A = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 81889B1B1E4C388C00ADBE9A;
+					};
+				};
+			};
+			buildConfigurationList = 81889B171E4C388B00ADBE9A /* Build configuration list for PBXProject "ARReader" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 81889B131E4C388B00ADBE9A;
+			productRefGroup = 81889B1D1E4C388C00ADBE9A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				81889B1B1E4C388C00ADBE9A /* ARReader */,
+				81889B341E4C388C00ADBE9A /* ARReaderTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		81889B1A1E4C388C00ADBE9A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				81889B2F1E4C388C00ADBE9A /* LaunchScreen.storyboard in Resources */,
+				81889B2C1E4C388C00ADBE9A /* Assets.xcassets in Resources */,
+				81889B841E4C390C00ADBE9A /* sishen.txt in Resources */,
+				81889B851E4C390C00ADBE9A /* test.txt in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		81889B331E4C388C00ADBE9A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		81889B181E4C388C00ADBE9A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				81889B7D1E4C390C00ADBE9A /* ARTextUtilities.m in Sources */,
+				81889B821E4C390C00ADBE9A /* ARReaderCenter.m in Sources */,
+				81889B771E4C390C00ADBE9A /* ARTextEffectWindow.m in Sources */,
+				81889B741E4C390C00ADBE9A /* ARSentinel.m in Sources */,
+				81889B791E4C390C00ADBE9A /* ARTextView.m in Sources */,
+				81889B731E4C390C00ADBE9A /* ARDispatchQueuePool.m in Sources */,
+				81889B801E4C390C00ADBE9A /* UIView+ComposingKit.m in Sources */,
+				81889B7E1E4C390C00ADBE9A /* ARPageData.m in Sources */,
+				81889B7A1E4C390C00ADBE9A /* ARComposingUtils.m in Sources */,
+				81889B7B1E4C390C00ADBE9A /* ARLineLayerDelegate.m in Sources */,
+				81889B811E4C390C00ADBE9A /* ARAppDelegate.m in Sources */,
+				81889B721E4C390C00ADBE9A /* ARAsyncLayer.m in Sources */,
+				81889B781E4C390C00ADBE9A /* ARTextMagnifier.m in Sources */,
+				81889B7F1E4C390C00ADBE9A /* ARPageParser.m in Sources */,
+				81889B7C1E4C390C00ADBE9A /* ARLineManager.m in Sources */,
+				81889B751E4C390C00ADBE9A /* ARTransaction.m in Sources */,
+				81889B831E4C390C00ADBE9A /* main.m in Sources */,
+				81889B761E4C390C00ADBE9A /* ARTextCursor.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		81889B311E4C388C00ADBE9A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				81889B871E4C3BE500ADBE9A /* ARReaderParserTest.m in Sources */,
+				81889B3A1E4C388C00ADBE9A /* ARReaderTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		81889B371E4C388C00ADBE9A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 81889B1B1E4C388C00ADBE9A /* ARReader */;
+			targetProxy = 81889B361E4C388C00ADBE9A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		81889B2D1E4C388C00ADBE9A /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				81889B2E1E4C388C00ADBE9A /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		81889B3C1E4C388C00ADBE9A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		81889B3D1E4C388C00ADBE9A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		81889B3F1E4C388C00ADBE9A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = ARReader/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.archy.ARReader;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		81889B401E4C388C00ADBE9A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = ARReader/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.archy.ARReader;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		81889B421E4C388C00ADBE9A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = ARReaderTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.archy.ARReaderTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ARReader.app/ARReader";
+			};
+			name = Debug;
+		};
+		81889B431E4C388C00ADBE9A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = ARReaderTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.archy.ARReaderTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ARReader.app/ARReader";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		81889B171E4C388B00ADBE9A /* Build configuration list for PBXProject "ARReader" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				81889B3C1E4C388C00ADBE9A /* Debug */,
+				81889B3D1E4C388C00ADBE9A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		81889B3E1E4C388C00ADBE9A /* Build configuration list for PBXNativeTarget "ARReader" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				81889B3F1E4C388C00ADBE9A /* Debug */,
+				81889B401E4C388C00ADBE9A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		81889B411E4C388C00ADBE9A /* Build configuration list for PBXNativeTarget "ARReaderTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				81889B421E4C388C00ADBE9A /* Debug */,
+				81889B431E4C388C00ADBE9A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 81889B141E4C388B00ADBE9A /* Project object */;
+}
