@@ -1,0 +1,6 @@
+language: objective-c
+xcode_project: ARReader.xcodeproj
+osx_image: xcode8
+ 
+script:
+  - xcodebuild test -project ARReader.xcodeproj -scheme ARReader -sdk iphonesimulator10.0 -destination 'platform=iOS Simulator,name=iPhone 7' | xcpretty -c
