@@ -679,16 +679,25 @@ ARCursorMake(CGPoint origin, CGFloat height)
     [self.bottomCursorView removeFromSuperview];
 }
 
+#pragma mark - Gesture Action
+
 - (void)userTapGestureDetected:(UITapGestureRecognizer *)tapGesture
 {
     [self resignFirstResponder];
-    [self becomeFirstResponder];
     CGPoint point = [tapGesture locationInView:self];
     [self removeCursorView];
     [self.textMenuController setMenuVisible:NO animated:YES];
     if (_textViewState == ARTextViewStateNormal) {
         self.currentLineValue = [self.composingUtils touchLineInView:self atPoint:point lineArray:self.excerptDelegate.underLineArray data:self.pageData textFrame:self.textFrame];
         if (self.currentLineValue) {
+            /* Fix of bug
+             issue 1
+             When the reader center controller add tap gesture to scroll page.
+             Quick tap the view will cause uicollectionviewcell disappear.
+             Because of last tap location ARTextView becomeFirstResponder.
+             closed by ArchyVan
+             */
+            [self becomeFirstResponder];
             self.textViewState = ARTextViewStateTouchLine;
             CGRect rect = [self.composingUtils selectContentRectInView:self withRange:self.currentLineValue.rangeValue data:self.pageData textFrame:self.textFrame];
             [self.textMenuController setMenuItems:@[self.menuDeleteExcerptItem,self.menuCreateItem, self.menuCopyItem]];
