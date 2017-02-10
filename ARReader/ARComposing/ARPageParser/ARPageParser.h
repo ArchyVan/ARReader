@@ -50,13 +50,13 @@
  @param content 内容
  @return 页面数据组
  */
-- (NSArray *)parserContent:(NSString *)content;
+- (NSArray *)parseContent:(NSString *)content;
 /**
  解析内容
  
  @param content 内容
  @return 单个大页面
  */
-- (ARPageData *)parserWholeContent:(NSString *)content;
+- (ARPageData *)parseWholeContent:(NSString *)content;
 
 @end

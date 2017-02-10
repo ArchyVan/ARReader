@@ -48,7 +48,7 @@
     _indent = indent;
     [self configAttributes];
 }
-- (NSArray *)parserContent:(NSString *)content
+- (NSArray *)parseContent:(NSString *)content
 {
     NSDate *date = [NSDate date];
     NSLog(@"\n Parsering Start");
@@ -155,7 +155,7 @@
     return pageArray;
 }
 
-- (ARPageData *)parserWholeContent:(NSString *)content
+- (ARPageData *)parseWholeContent:(NSString *)content
 {
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:content];
     NSDictionary *defaultAttributes = self.defaultAttributes;

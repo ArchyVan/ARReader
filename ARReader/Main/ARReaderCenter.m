@@ -35,7 +35,7 @@
     [self.view addSubview:self.readerNavigation];
     [self.view addSubview:self.readerTool];
     
-    self.readerPages = [self.readerParser parserContent:self.readerContent];
+    self.readerPages = [self.readerParser parseContent:self.readerContent];
     [self.readerView reloadData];
 }
 
