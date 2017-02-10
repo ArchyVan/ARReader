@@ -20,21 +20,27 @@
     }
     newLineArray = [self.lineArray mutableCopy];
     BOOL isAddRange = NO;
-    for (NSValue *lineRange in self.lineArray) {
-        NSRange intersectionRange = NSIntersectionRange(range, lineRange.rangeValue);
+    NSRange compareRange = range;
+    NSRange unionRange = NSMakeRange(0, 0);
+    NSMutableIndexSet *indexSet = [[NSMutableIndexSet alloc] init];
+    for (int i = 0; i < self.lineArray.count; i++) {
+        NSRange lineRange = ((NSValue *)self.lineArray[i]).rangeValue;
+        NSRange intersectionRange = NSIntersectionRange(compareRange, lineRange);
         if (intersectionRange.location == 0 && intersectionRange.length == 0) {
             continue;
         }
         if (intersectionRange.location != NSNotFound) {
             isAddRange = YES;
-            [newLineArray removeObject:lineRange];
-            NSRange unionRange = NSUnionRange(lineRange.rangeValue, range);
-            [newLineArray addObject:[NSValue valueWithRange:unionRange]];
-            break;
+            [indexSet addIndex:i];
+            unionRange = NSUnionRange(lineRange, compareRange);
+            compareRange = unionRange;
         }
     }
     if (!isAddRange) {
         [newLineArray addObject:[NSValue valueWithRange:range]];
+    } else {
+        [newLineArray removeObjectsAtIndexes:indexSet];
+        [newLineArray addObject:[NSValue valueWithRange:unionRange]];
     }
     self.lineArray = [newLineArray copy];
     return newLineArray;
