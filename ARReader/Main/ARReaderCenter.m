@@ -32,6 +32,8 @@
     self.view.backgroundColor = [UIColor colorWithHexString:@"f4f6f7"];
     
     [self.view addSubview:self.readerView];
+    [self.view addSubview:self.readerNavigation];
+    [self.view addSubview:self.readerTool];
     
     self.readerPages = [self.readerParser parserContent:self.readerContent];
     [self.readerView reloadData];
@@ -105,6 +107,36 @@
         [_readerView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"PageCell"];
     }
     return _readerView;
+}
+
+- (UIView *)readerNavigation
+{
+    if (!_readerNavigation) {
+        _readerNavigation = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 64)];
+        _readerNavigation.backgroundColor = [UIColor whiteColor];
+        _readerNavigation.layer.shadowColor = [UIColor blackColor].CGColor;
+        _readerNavigation.layer.shadowOffset = CGSizeMake(0, 1);
+        _readerNavigation.layer.shadowRadius = 4;
+        _readerNavigation.layer.shadowOpacity = 0.05;
+        _readerNavigation.clipsToBounds = NO;
+        _readerNavigation.hidden = YES;
+    }
+    return _readerNavigation;
+}
+
+- (UIView *)readerTool
+{
+    if (!_readerTool) {
+        _readerTool = [[UIView alloc] initWithFrame:CGRectMake(0, ScreenHeight - 44, ScreenWidth, 44)];
+        _readerTool.backgroundColor = [UIColor whiteColor];
+        _readerTool.layer.shadowColor = [UIColor blackColor].CGColor;
+        _readerTool.layer.shadowOffset = CGSizeMake(0, 1);
+        _readerTool.layer.shadowRadius = 4;
+        _readerTool.layer.shadowOpacity = 0.05;
+        _readerTool.clipsToBounds = NO;
+        _readerTool.hidden = YES;
+    }
+    return _readerTool;
 }
 
 - (NSString *)readerContent
