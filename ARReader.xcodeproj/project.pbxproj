@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		81889B2C1E4C388C00ADBE9A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81889B2B1E4C388C00ADBE9A /* Assets.xcassets */; };
 		81889B2F1E4C388C00ADBE9A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81889B2D1E4C388C00ADBE9A /* LaunchScreen.storyboard */; };
-		81889B3A1E4C388C00ADBE9A /* ARReaderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 81889B391E4C388C00ADBE9A /* ARReaderTests.m */; };
 		81889B721E4C390C00ADBE9A /* ARAsyncLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 81889B471E4C390C00ADBE9A /* ARAsyncLayer.m */; };
 		81889B731E4C390C00ADBE9A /* ARDispatchQueuePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 81889B491E4C390C00ADBE9A /* ARDispatchQueuePool.m */; };
 		81889B741E4C390C00ADBE9A /* ARSentinel.m in Sources */ = {isa = PBXBuildFile; fileRef = 81889B4B1E4C390C00ADBE9A /* ARSentinel.m */; };
@@ -30,7 +29,9 @@
 		81889B831E4C390C00ADBE9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 81889B6E1E4C390C00ADBE9A /* main.m */; };
 		81889B841E4C390C00ADBE9A /* sishen.txt in Resources */ = {isa = PBXBuildFile; fileRef = 81889B701E4C390C00ADBE9A /* sishen.txt */; };
 		81889B851E4C390C00ADBE9A /* test.txt in Resources */ = {isa = PBXBuildFile; fileRef = 81889B711E4C390C00ADBE9A /* test.txt */; };
-		81889B871E4C3BE500ADBE9A /* ARReaderParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 81889B861E4C3BE500ADBE9A /* ARReaderParserTest.m */; };
+		81889BD91E4D915B00ADBE9A /* ARReaderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 81889BD81E4D915B00ADBE9A /* ARReaderTest.m */; };
+		81889BDB1E4D929700ADBE9A /* ARReaderParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 81889BDA1E4D929700ADBE9A /* ARReaderParserTest.m */; };
+		81889BDD1E4D947E00ADBE9A /* ARRedaerLineManagerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 81889BDC1E4D947E00ADBE9A /* ARRedaerLineManagerTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,7 +50,6 @@
 		81889B2E1E4C388C00ADBE9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		81889B301E4C388C00ADBE9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		81889B351E4C388C00ADBE9A /* ARReaderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ARReaderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		81889B391E4C388C00ADBE9A /* ARReaderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ARReaderTests.m; sourceTree = "<group>"; };
 		81889B3B1E4C388C00ADBE9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		81889B461E4C390C00ADBE9A /* ARAsyncLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARAsyncLayer.h; sourceTree = "<group>"; };
 		81889B471E4C390C00ADBE9A /* ARAsyncLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARAsyncLayer.m; sourceTree = "<group>"; };
@@ -89,7 +89,10 @@
 		81889B6E1E4C390C00ADBE9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		81889B701E4C390C00ADBE9A /* sishen.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sishen.txt; sourceTree = "<group>"; };
 		81889B711E4C390C00ADBE9A /* test.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.txt; sourceTree = "<group>"; };
-		81889B861E4C3BE500ADBE9A /* ARReaderParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARReaderParserTest.m; sourceTree = "<group>"; };
+		81889BD71E4D915B00ADBE9A /* ARReaderTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARReaderTest.h; sourceTree = "<group>"; };
+		81889BD81E4D915B00ADBE9A /* ARReaderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARReaderTest.m; sourceTree = "<group>"; };
+		81889BDA1E4D929700ADBE9A /* ARReaderParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARReaderParserTest.m; sourceTree = "<group>"; };
+		81889BDC1E4D947E00ADBE9A /* ARRedaerLineManagerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARRedaerLineManagerTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,8 +155,10 @@
 		81889B381E4C388C00ADBE9A /* ARReaderTests */ = {
 			isa = PBXGroup;
 			children = (
-				81889B391E4C388C00ADBE9A /* ARReaderTests.m */,
-				81889B861E4C3BE500ADBE9A /* ARReaderParserTest.m */,
+				81889BD71E4D915B00ADBE9A /* ARReaderTest.h */,
+				81889BD81E4D915B00ADBE9A /* ARReaderTest.m */,
+				81889BDA1E4D929700ADBE9A /* ARReaderParserTest.m */,
+				81889BDC1E4D947E00ADBE9A /* ARRedaerLineManagerTest.m */,
 				81889B3B1E4C388C00ADBE9A /* Info.plist */,
 			);
 			path = ARReaderTests;
@@ -386,8 +391,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				81889B871E4C3BE500ADBE9A /* ARReaderParserTest.m in Sources */,
-				81889B3A1E4C388C00ADBE9A /* ARReaderTests.m in Sources */,
+				81889BD91E4D915B00ADBE9A /* ARReaderTest.m in Sources */,
+				81889BDB1E4D929700ADBE9A /* ARReaderParserTest.m in Sources */,
+				81889BDD1E4D947E00ADBE9A /* ARRedaerLineManagerTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
