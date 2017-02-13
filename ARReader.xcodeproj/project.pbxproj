@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		81594D171E519D7800A2F845 /* ARTextLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 81594D161E519D7800A2F845 /* ARTextLine.m */; };
+		81594D1A1E51A34400A2F845 /* ARTextLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 81594D191E51A34400A2F845 /* ARTextLayout.m */; };
 		81889B2C1E4C388C00ADBE9A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81889B2B1E4C388C00ADBE9A /* Assets.xcassets */; };
 		81889B2F1E4C388C00ADBE9A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81889B2D1E4C388C00ADBE9A /* LaunchScreen.storyboard */; };
 		81889B721E4C390C00ADBE9A /* ARAsyncLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 81889B471E4C390C00ADBE9A /* ARAsyncLayer.m */; };
@@ -45,6 +47,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		81594D151E519D7800A2F845 /* ARTextLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARTextLine.h; sourceTree = "<group>"; };
+		81594D161E519D7800A2F845 /* ARTextLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARTextLine.m; sourceTree = "<group>"; };
+		81594D181E51A34400A2F845 /* ARTextLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARTextLayout.h; sourceTree = "<group>"; };
+		81594D191E51A34400A2F845 /* ARTextLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARTextLayout.m; sourceTree = "<group>"; };
 		81889B1C1E4C388C00ADBE9A /* ARReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81889B2B1E4C388C00ADBE9A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		81889B2E1E4C388C00ADBE9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -218,6 +224,10 @@
 				81889B5E1E4C390C00ADBE9A /* ARLineManager.m */,
 				81889B5F1E4C390C00ADBE9A /* ARTextUtilities.h */,
 				81889B601E4C390C00ADBE9A /* ARTextUtilities.m */,
+				81594D181E51A34400A2F845 /* ARTextLayout.h */,
+				81594D191E51A34400A2F845 /* ARTextLayout.m */,
+				81594D151E519D7800A2F845 /* ARTextLine.h */,
+				81594D161E519D7800A2F845 /* ARTextLine.m */,
 			);
 			path = ARComposingUtils;
 			sourceTree = "<group>";
@@ -381,9 +391,11 @@
 				81889B781E4C390C00ADBE9A /* ARTextMagnifier.m in Sources */,
 				81889B7F1E4C390C00ADBE9A /* ARPageParser.m in Sources */,
 				81889B7C1E4C390C00ADBE9A /* ARLineManager.m in Sources */,
+				81594D1A1E51A34400A2F845 /* ARTextLayout.m in Sources */,
 				81889B751E4C390C00ADBE9A /* ARTransaction.m in Sources */,
 				81889B831E4C390C00ADBE9A /* main.m in Sources */,
 				81889B761E4C390C00ADBE9A /* ARTextCursor.m in Sources */,
+				81594D171E519D7800A2F845 /* ARTextLine.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
