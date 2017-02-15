@@ -22,7 +22,7 @@
         return nil;
     }
     ARTextLayout *layout = [ARTextLayout new];
-//    layout->c = content;
+    layout->_content = content;
     [layout setCTFrame:CTFrame];
     return layout;
 }
@@ -49,7 +49,8 @@
                 ARTextLine *line = [ARTextLine lineWithCTLine:ctLine position:linePosition];
                 [lines addObject:line];
             }
-            NSLog(@"\n lines:%@",lines);
+            _lines = lines;
+            _wordCount = CTFrameGetVisibleStringRange(_CTFrame).length;
         }
     }
 }
@@ -69,7 +70,5 @@
         oringin.y -= padding;
     }];
 }
-
-
 
 @end
