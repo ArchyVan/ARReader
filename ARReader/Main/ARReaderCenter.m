@@ -8,9 +8,9 @@
 
 #import "ARReaderCenter.h"
 #import "ARComposing.h"
-
-#define ScreenWidth [UIScreen mainScreen].bounds.size.width
-#define ScreenHeight [UIScreen mainScreen].bounds.size.height
+#import "ARReaderMacros.h"
+#import "ARMediator.h"
+#import "ARMediator+Reader.h"
 
 @interface ARReaderCenter () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
@@ -35,8 +35,13 @@
     [self.view addSubview:self.readerNavigation];
     [self.view addSubview:self.readerTool];
     
-    self.readerPages = [self.readerParser parseContent:self.readerContent];
+    self.readerPages = [[ARMediator sharedInstance] Reader_parseContentWithParser:self.readerParser content:self.readerContent];
     [self.readerView reloadData];
+}
+
+- (void)dealloc
+{
+    [[ARMediator sharedInstance] Reader_cleanCollectionViewCellTarget];
 }
 
 - (BOOL)prefersStatusBarHidden
@@ -52,22 +57,9 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PageCell" forIndexPath:indexPath];
-    for (UIView *subView in cell.contentView.subviews) {
-        [subView removeFromSuperview];
-    }
+    UICollectionViewCell *cell = [[ARMediator sharedInstance] Reader_cellWithIdentifier:@"PageCell" collectionView:collectionView indexPath:indexPath];
     ARPageData *pageData = [self.readerPages objectAtIndex:indexPath.item];
-    ARTextView *textView = [[ARTextView alloc] initWithFrame:CGRectMake(15, 0, ScreenWidth - 30, ScreenHeight - 80)];
-    textView.pageData = pageData;
-    textView.textColor = [UIColor colorWithHexString:@"#3A3D40"];
-    textView.font = [UIFont systemFontOfSize:21];
-    textView.indent = YES;
-    textView.lineSpacing = 10;
-    textView.titleLength = 11;
-    textView.editable = YES;
-    textView.textAlignment = NSTextAlignmentJustified;
-    textView.backgroundColor = [UIColor colorWithHexString:@"#F4F6F7"];
-    [cell.contentView addSubview:textView];
+    [[ARMediator sharedInstance] Reader_configCollectionViewCell:cell pageData:pageData];
     return cell;
 }
 
@@ -102,6 +94,7 @@
         _readerView.backgroundColor = [UIColor colorWithHexString:@"f4f6f7"];
         _readerView.delegate = self;
         _readerView.dataSource = self;
+        _readerView.clipsToBounds = NO;
         _readerView.showsVerticalScrollIndicator = NO;
         _readerView.showsHorizontalScrollIndicator = NO;
         [_readerView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"PageCell"];
@@ -142,12 +135,12 @@
 - (NSString *)readerContent
 {
     if (!_readerContent) {
-        //        NSString *path = [[NSBundle mainBundle] pathForResource:@"sishen" ofType:@"txt"];
-        //        unsigned long encode = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
-        //        NSData *responseData = [NSData dataWithContentsOfFile:path];
-        //        NSString *content = [[NSString alloc] initWithData:responseData encoding:encode];
-        NSString *newPath = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"txt"];
-        NSString *content = [[NSString alloc] initWithContentsOfFile:newPath encoding:NSUTF8StringEncoding error:nil];
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"sishen" ofType:@"txt"];
+        unsigned long encode = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
+        NSData *responseData = [NSData dataWithContentsOfFile:path];
+        NSString *content = [[NSString alloc] initWithData:responseData encoding:encode];
+        //        NSString *newPath = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"txt"];
+        //        NSString *content = [[NSString alloc] initWithContentsOfFile:newPath encoding:NSUTF8StringEncoding error:nil];
         _readerContent = content;
     }
     return _readerContent;
@@ -158,7 +151,7 @@
     if (!_readerParser) {
         _readerParser = [ARPageParser sharedInstance];
         _readerParser.fontSize = 21;
-        _readerParser.titleLength = 11;
+        _readerParser.titleLength = 2;
         _readerParser.indent = YES;
         _readerParser.pageSize = CGSizeMake(ScreenWidth - 30, ScreenHeight - 80);
         _readerParser.lineSpacing = 10;

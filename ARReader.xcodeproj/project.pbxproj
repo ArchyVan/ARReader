@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		81594D171E519D7800A2F845 /* ARTextLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 81594D161E519D7800A2F845 /* ARTextLine.m */; };
 		81594D1A1E51A34400A2F845 /* ARTextLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 81594D191E51A34400A2F845 /* ARTextLayout.m */; };
+		817239D61E5439A20060441C /* ARMediator+Reader.m in Sources */ = {isa = PBXBuildFile; fileRef = 817239D11E5439A20060441C /* ARMediator+Reader.m */; };
+		817239D71E5439A20060441C /* ARMediator.m in Sources */ = {isa = PBXBuildFile; fileRef = 817239D31E5439A20060441C /* ARMediator.m */; };
+		817239D81E5439A20060441C /* ARTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = 817239D51E5439A20060441C /* ARTarget.m */; };
 		81889B2C1E4C388C00ADBE9A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81889B2B1E4C388C00ADBE9A /* Assets.xcassets */; };
 		81889B2F1E4C388C00ADBE9A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81889B2D1E4C388C00ADBE9A /* LaunchScreen.storyboard */; };
 		81889B721E4C390C00ADBE9A /* ARAsyncLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 81889B471E4C390C00ADBE9A /* ARAsyncLayer.m */; };
@@ -51,6 +54,13 @@
 		81594D161E519D7800A2F845 /* ARTextLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARTextLine.m; sourceTree = "<group>"; };
 		81594D181E51A34400A2F845 /* ARTextLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARTextLayout.h; sourceTree = "<group>"; };
 		81594D191E51A34400A2F845 /* ARTextLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARTextLayout.m; sourceTree = "<group>"; };
+		817239D01E5439A20060441C /* ARMediator+Reader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ARMediator+Reader.h"; sourceTree = "<group>"; };
+		817239D11E5439A20060441C /* ARMediator+Reader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ARMediator+Reader.m"; sourceTree = "<group>"; };
+		817239D21E5439A20060441C /* ARMediator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARMediator.h; sourceTree = "<group>"; };
+		817239D31E5439A20060441C /* ARMediator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARMediator.m; sourceTree = "<group>"; };
+		817239D41E5439A20060441C /* ARTarget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARTarget.h; sourceTree = "<group>"; };
+		817239D51E5439A20060441C /* ARTarget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARTarget.m; sourceTree = "<group>"; };
+		817239D91E543A640060441C /* ARReaderMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARReaderMacros.h; sourceTree = "<group>"; };
 		81889B1C1E4C388C00ADBE9A /* ARReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81889B2B1E4C388C00ADBE9A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		81889B2E1E4C388C00ADBE9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -119,6 +129,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		817239CF1E5439A20060441C /* ARMediator */ = {
+			isa = PBXGroup;
+			children = (
+				817239D01E5439A20060441C /* ARMediator+Reader.h */,
+				817239D11E5439A20060441C /* ARMediator+Reader.m */,
+				817239D21E5439A20060441C /* ARMediator.h */,
+				817239D31E5439A20060441C /* ARMediator.m */,
+				817239D41E5439A20060441C /* ARTarget.h */,
+				817239D51E5439A20060441C /* ARTarget.m */,
+			);
+			path = ARMediator;
+			sourceTree = "<group>";
+		};
 		81889B131E4C388B00ADBE9A = {
 			isa = PBXGroup;
 			children = (
@@ -255,10 +278,12 @@
 		81889B691E4C390C00ADBE9A /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				817239CF1E5439A20060441C /* ARMediator */,
 				81889B6A1E4C390C00ADBE9A /* ARAppDelegate.h */,
 				81889B6B1E4C390C00ADBE9A /* ARAppDelegate.m */,
 				81889B6C1E4C390C00ADBE9A /* ARReaderCenter.h */,
 				81889B6D1E4C390C00ADBE9A /* ARReaderCenter.m */,
+				817239D91E543A640060441C /* ARReaderMacros.h */,
 				81889B6E1E4C390C00ADBE9A /* main.m */,
 			);
 			path = Main;
@@ -376,9 +401,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				817239D61E5439A20060441C /* ARMediator+Reader.m in Sources */,
 				81889B7D1E4C390C00ADBE9A /* ARTextUtilities.m in Sources */,
 				81889B821E4C390C00ADBE9A /* ARReaderCenter.m in Sources */,
 				81889B771E4C390C00ADBE9A /* ARTextEffectWindow.m in Sources */,
+				817239D81E5439A20060441C /* ARTarget.m in Sources */,
 				81889B741E4C390C00ADBE9A /* ARSentinel.m in Sources */,
 				81889B791E4C390C00ADBE9A /* ARTextView.m in Sources */,
 				81889B731E4C390C00ADBE9A /* ARDispatchQueuePool.m in Sources */,
@@ -390,6 +417,7 @@
 				81889B721E4C390C00ADBE9A /* ARAsyncLayer.m in Sources */,
 				81889B781E4C390C00ADBE9A /* ARTextMagnifier.m in Sources */,
 				81889B7F1E4C390C00ADBE9A /* ARPageParser.m in Sources */,
+				817239D71E5439A20060441C /* ARMediator.m in Sources */,
 				81889B7C1E4C390C00ADBE9A /* ARLineManager.m in Sources */,
 				81594D1A1E51A34400A2F845 /* ARTextLayout.m in Sources */,
 				81889B751E4C390C00ADBE9A /* ARTransaction.m in Sources */,
