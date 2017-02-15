@@ -10,7 +10,6 @@
 #import "ARPageData.h"
 #import <UIKit/UIKit.h>
 #import <CoreText/CoreText.h>
-
 @interface ARPageParser ()
 
 @property (nonatomic, copy) NSDictionary *defaultAttributes;
@@ -48,7 +47,13 @@
     _indent = indent;
     [self configAttributes];
 }
+
 - (NSArray *)parseContent:(NSString *)content
+{
+    return [self parseContent:content cacheEnabled:NO];
+}
+
+- (NSArray *)parseContent:(NSString *)content cacheEnabled:(BOOL)cacheEnabled
 {
     NSDate *date = [NSDate date];
     NSLog(@"\n Parsering Start");
@@ -64,20 +69,23 @@
         NSLog(@"\n Must Set PageSize");
         return nil;
     }
-    
+    NSMutableArray *cacheImageArray = nil;
+    if (cacheEnabled) {
+        cacheImageArray = [NSMutableArray array];
+    }
     NSMutableString *logString = [NSMutableString stringWithFormat:@"\n Parse Parameters:\n------------Parser------------\n  PageSize      -- %@\n  FontSize      -- %f\n  LineSpacing   -- %f\n  Indent        -- %@\n  ContentLength -- %lu",NSStringFromCGSize(self.pageSize),self.fontSize,self.lineSpacing,self.indent?@"YES":@"NO",(unsigned long)content.length];
     NSInteger maxCount = (self.pageSize.width / self.fontSize )+ 10.0;
     NSMutableArray *pageArray = [NSMutableArray array];
     NSDictionary *defaultAttributes = self.defaultAttributes;
     NSDictionary *firstLineHeadIndentAttributes = self.indentAttributes;
-//    if (self.customAttributes) {
-//        [self.customAttributes enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
-//            NSRange range = [key rangeValue];
-//            if ([obj isKindOfClass:[UIFont class]]) {
-//            } else if ([UIColor class]) {
-//            }
-//        }];
-//    }
+    //    if (self.customAttributes) {
+    //        [self.customAttributes enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+    //            NSRange range = [key rangeValue];
+    //            if ([obj isKindOfClass:[UIFont class]]) {
+    //            } else if ([UIColor class]) {
+    //            }
+    //        }];
+    //    }
     
     if (self.titleLength > 0) {
         [logString appendFormat:@"\n  TitleLength   -- %lu",(unsigned long)self.titleLength];
@@ -145,11 +153,19 @@
                 isPageParagraphEnd = YES;
             }
             [pageArray addObject:data];
+            if (cacheEnabled) {
+                [cacheImageArray addObject:[self pageImageWithFrame:frame]];
+            }
         }
         rangeIndex += nRange.length;
         CFRelease(frame);
         CFRelease(childFramesetter);
         CFRelease(path);
+    }
+    if (cacheEnabled) {
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            [self cacheZipWithImageArray:cacheImageArray];
+        });
     }
     NSLog(@"\n Parsering End,Page Count %lu,Cost %fs",(unsigned long)pageArray.count,[[NSDate date] timeIntervalSinceDate:date]);
     return pageArray;
@@ -185,6 +201,32 @@
     CFRelease(frame);
     CFRelease(framesetter);
     return pageData;
+}
+
+- (UIImage *)pageImageWithFrame:(CTFrameRef)frame
+{
+    UIGraphicsBeginImageContextWithOptions(self.pageSize, YES, 0);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetTextMatrix(context, CGAffineTransformIdentity);
+    CGContextTranslateCTM(context, 0, self.pageSize.height);
+    CGContextScaleCTM(context, 1.0, -1.0);
+    CGContextSetFillColorWithColor(context, [UIColor whiteColor].CGColor);
+    CGContextFillRect(context, CGRectMake(0, 0, self.pageSize.width, self.pageSize.height));
+    CTFrameDraw(frame, context);
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return image;
+}
+
+- (void)cacheZipWithImageArray:(NSArray *)imageArray
+{
+    [imageArray enumerateObjectsUsingBlock:^(UIImage *image, NSUInteger idx, BOOL * _Nonnull stop) {
+        //这里可以做本地保存图片处理，用于进行比对下面是简单实例
+//        NSString *path = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject];
+//        NSString *imgPath = [path stringByAppendingPathComponent:[NSString stringWithFormat:@"page_%lu.png",(unsigned long)idx]];
+//        NSData *data = UIImagePNGRepresentation(image);
+//        [data writeToFile:imgPath atomically:YES];
+    }];
 }
 
 - (void)configAttributes

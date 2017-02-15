@@ -11,6 +11,7 @@
 #import "ARAsyncLayer.h"
 #import "ARTransaction.h"
 #import "ARPageParser.h"
+#import "CALayer+Reader.h"
 
 @interface ARLineLayerDelegate () <ARAsyncLayerDelegate>
 

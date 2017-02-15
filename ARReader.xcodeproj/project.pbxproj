@@ -12,6 +12,10 @@
 		817239D61E5439A20060441C /* ARMediator+Reader.m in Sources */ = {isa = PBXBuildFile; fileRef = 817239D11E5439A20060441C /* ARMediator+Reader.m */; };
 		817239D71E5439A20060441C /* ARMediator.m in Sources */ = {isa = PBXBuildFile; fileRef = 817239D31E5439A20060441C /* ARMediator.m */; };
 		817239D81E5439A20060441C /* ARTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = 817239D51E5439A20060441C /* ARTarget.m */; };
+		817239DC1E543BF30060441C /* UIColor+Reader.m in Sources */ = {isa = PBXBuildFile; fileRef = 817239DB1E543BF30060441C /* UIColor+Reader.m */; };
+		817239DF1E5440820060441C /* CALayer+Reader.m in Sources */ = {isa = PBXBuildFile; fileRef = 817239DE1E5440820060441C /* CALayer+Reader.m */; };
+		817239E21E5443CB0060441C /* ARReaderDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 817239E11E5443CB0060441C /* ARReaderDataSource.m */; };
+		81723A1E1E5454CD0060441C /* ARReaderKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 81723A1D1E5454CD0060441C /* ARReaderKit.m */; };
 		81889B2C1E4C388C00ADBE9A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81889B2B1E4C388C00ADBE9A /* Assets.xcassets */; };
 		81889B2F1E4C388C00ADBE9A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81889B2D1E4C388C00ADBE9A /* LaunchScreen.storyboard */; };
 		81889B721E4C390C00ADBE9A /* ARAsyncLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 81889B471E4C390C00ADBE9A /* ARAsyncLayer.m */; };
@@ -28,7 +32,7 @@
 		81889B7D1E4C390C00ADBE9A /* ARTextUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 81889B601E4C390C00ADBE9A /* ARTextUtilities.m */; };
 		81889B7E1E4C390C00ADBE9A /* ARPageData.m in Sources */ = {isa = PBXBuildFile; fileRef = 81889B631E4C390C00ADBE9A /* ARPageData.m */; };
 		81889B7F1E4C390C00ADBE9A /* ARPageParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 81889B661E4C390C00ADBE9A /* ARPageParser.m */; };
-		81889B801E4C390C00ADBE9A /* UIView+ComposingKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 81889B681E4C390C00ADBE9A /* UIView+ComposingKit.m */; };
+		81889B801E4C390C00ADBE9A /* UIView+Reader.m in Sources */ = {isa = PBXBuildFile; fileRef = 81889B681E4C390C00ADBE9A /* UIView+Reader.m */; };
 		81889B811E4C390C00ADBE9A /* ARAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 81889B6B1E4C390C00ADBE9A /* ARAppDelegate.m */; };
 		81889B821E4C390C00ADBE9A /* ARReaderCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 81889B6D1E4C390C00ADBE9A /* ARReaderCenter.m */; };
 		81889B831E4C390C00ADBE9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 81889B6E1E4C390C00ADBE9A /* main.m */; };
@@ -61,6 +65,14 @@
 		817239D41E5439A20060441C /* ARTarget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARTarget.h; sourceTree = "<group>"; };
 		817239D51E5439A20060441C /* ARTarget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARTarget.m; sourceTree = "<group>"; };
 		817239D91E543A640060441C /* ARReaderMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARReaderMacros.h; sourceTree = "<group>"; };
+		817239DA1E543BF30060441C /* UIColor+Reader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Reader.h"; sourceTree = "<group>"; };
+		817239DB1E543BF30060441C /* UIColor+Reader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Reader.m"; sourceTree = "<group>"; };
+		817239DD1E5440820060441C /* CALayer+Reader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+Reader.h"; sourceTree = "<group>"; };
+		817239DE1E5440820060441C /* CALayer+Reader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+Reader.m"; sourceTree = "<group>"; };
+		817239E01E5443CB0060441C /* ARReaderDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARReaderDataSource.h; sourceTree = "<group>"; };
+		817239E11E5443CB0060441C /* ARReaderDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARReaderDataSource.m; sourceTree = "<group>"; };
+		81723A1C1E5454CD0060441C /* ARReaderKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARReaderKit.h; sourceTree = "<group>"; };
+		81723A1D1E5454CD0060441C /* ARReaderKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARReaderKit.m; sourceTree = "<group>"; };
 		81889B1C1E4C388C00ADBE9A /* ARReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81889B2B1E4C388C00ADBE9A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		81889B2E1E4C388C00ADBE9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -96,8 +108,8 @@
 		81889B631E4C390C00ADBE9A /* ARPageData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARPageData.m; sourceTree = "<group>"; };
 		81889B651E4C390C00ADBE9A /* ARPageParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARPageParser.h; sourceTree = "<group>"; };
 		81889B661E4C390C00ADBE9A /* ARPageParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARPageParser.m; sourceTree = "<group>"; };
-		81889B671E4C390C00ADBE9A /* UIView+ComposingKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ComposingKit.h"; sourceTree = "<group>"; };
-		81889B681E4C390C00ADBE9A /* UIView+ComposingKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ComposingKit.m"; sourceTree = "<group>"; };
+		81889B671E4C390C00ADBE9A /* UIView+Reader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Reader.h"; sourceTree = "<group>"; };
+		81889B681E4C390C00ADBE9A /* UIView+Reader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Reader.m"; sourceTree = "<group>"; };
 		81889B6A1E4C390C00ADBE9A /* ARAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARAppDelegate.h; sourceTree = "<group>"; };
 		81889B6B1E4C390C00ADBE9A /* ARAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARAppDelegate.m; sourceTree = "<group>"; };
 		81889B6C1E4C390C00ADBE9A /* ARReaderCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARReaderCenter.h; sourceTree = "<group>"; };
@@ -269,8 +281,12 @@
 			children = (
 				81889B651E4C390C00ADBE9A /* ARPageParser.h */,
 				81889B661E4C390C00ADBE9A /* ARPageParser.m */,
-				81889B671E4C390C00ADBE9A /* UIView+ComposingKit.h */,
-				81889B681E4C390C00ADBE9A /* UIView+ComposingKit.m */,
+				81889B671E4C390C00ADBE9A /* UIView+Reader.h */,
+				81889B681E4C390C00ADBE9A /* UIView+Reader.m */,
+				817239DD1E5440820060441C /* CALayer+Reader.h */,
+				817239DE1E5440820060441C /* CALayer+Reader.m */,
+				817239DA1E543BF30060441C /* UIColor+Reader.h */,
+				817239DB1E543BF30060441C /* UIColor+Reader.m */,
 			);
 			path = ARPageParser;
 			sourceTree = "<group>";
@@ -283,6 +299,10 @@
 				81889B6B1E4C390C00ADBE9A /* ARAppDelegate.m */,
 				81889B6C1E4C390C00ADBE9A /* ARReaderCenter.h */,
 				81889B6D1E4C390C00ADBE9A /* ARReaderCenter.m */,
+				81723A1C1E5454CD0060441C /* ARReaderKit.h */,
+				81723A1D1E5454CD0060441C /* ARReaderKit.m */,
+				817239E01E5443CB0060441C /* ARReaderDataSource.h */,
+				817239E11E5443CB0060441C /* ARReaderDataSource.m */,
 				817239D91E543A640060441C /* ARReaderMacros.h */,
 				81889B6E1E4C390C00ADBE9A /* main.m */,
 			);
@@ -403,13 +423,17 @@
 			files = (
 				817239D61E5439A20060441C /* ARMediator+Reader.m in Sources */,
 				81889B7D1E4C390C00ADBE9A /* ARTextUtilities.m in Sources */,
+				817239E21E5443CB0060441C /* ARReaderDataSource.m in Sources */,
 				81889B821E4C390C00ADBE9A /* ARReaderCenter.m in Sources */,
 				81889B771E4C390C00ADBE9A /* ARTextEffectWindow.m in Sources */,
 				817239D81E5439A20060441C /* ARTarget.m in Sources */,
 				81889B741E4C390C00ADBE9A /* ARSentinel.m in Sources */,
+				817239DC1E543BF30060441C /* UIColor+Reader.m in Sources */,
 				81889B791E4C390C00ADBE9A /* ARTextView.m in Sources */,
+				81723A1E1E5454CD0060441C /* ARReaderKit.m in Sources */,
+				817239DF1E5440820060441C /* CALayer+Reader.m in Sources */,
 				81889B731E4C390C00ADBE9A /* ARDispatchQueuePool.m in Sources */,
-				81889B801E4C390C00ADBE9A /* UIView+ComposingKit.m in Sources */,
+				81889B801E4C390C00ADBE9A /* UIView+Reader.m in Sources */,
 				81889B7E1E4C390C00ADBE9A /* ARPageData.m in Sources */,
 				81889B7A1E4C390C00ADBE9A /* ARComposingUtils.m in Sources */,
 				81889B7B1E4C390C00ADBE9A /* ARLineLayerDelegate.m in Sources */,
