@@ -53,6 +53,14 @@
 - (NSArray *)parseContent:(NSString *)content;
 /**
  解析内容
+
+ @param content content 内容
+ @param cacheEnabled 是否缓存生成图片
+ @return 页面数据组
+ */
+- (NSArray *)parseContent:(NSString *)content cacheEnabled:(BOOL)cacheEnabled;
+/**
+ 解析内容
  
  @param content 内容
  @return 单个大页面

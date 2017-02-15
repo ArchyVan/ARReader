@@ -55,7 +55,6 @@ typedef void (^ARUrlRouterCallbackBlock)(NSDictionary *info);
     return nil;
 }
 
-
 - (UICollectionViewCell *)Action_readerCell:(NSDictionary *)params
 {
     UICollectionView *collectionView = params[@"collectionView"];

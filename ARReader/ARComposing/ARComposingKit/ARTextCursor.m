@@ -7,9 +7,9 @@
 //
 
 #import "ARTextCursor.h"
-#import "UIView+ComposingKit.h"
+#import "UIView+Reader.h"
+#import "UIColor+Reader.h"
 
-#define RGB(A, B, C)    [UIColor colorWithRed:A/255.0 green:B/255.0 blue:C/255.0 alpha:1.0]
 @implementation ARTextCursor
 
 - (instancetype)init
@@ -24,7 +24,7 @@
         self.backgroundColor = [UIColor clearColor];
         self.userInteractionEnabled = YES;
         self.cursorHeight = height;
-        self.cursorColor = RGB(46, 159, 255);
+        self.cursorColor = [UIColor colorWithHexString:@"2e9fff"];
         self.cursorType = ARTextCursorTop;
         UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(cursorPan:)];
         panGesture.delegate = self;

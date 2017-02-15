@@ -23,6 +23,8 @@
 #import "ARTextMagnifier.h"
 #import "ARTextEffectWindow.h"
 
-#import "UIView+ComposingKit.h"
+#import "UIView+Reader.h"
+#import "UIColor+Reader.h"
+#import "CALayer+Reader.h"
 
 #endif /* ARComposing_h */

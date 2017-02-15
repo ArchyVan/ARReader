@@ -8,7 +8,7 @@
 
 #import "ARTextEffectWindow.h"
 #import "ARTextUtilities.h"
-#import "UIView+ComposingKit.h"
+#import "UIView+Reader.h"
 
 @implementation ARTextEffectWindow
 

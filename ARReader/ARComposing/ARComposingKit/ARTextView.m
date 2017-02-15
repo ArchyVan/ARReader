@@ -16,7 +16,8 @@
 #import "ARLineManager.h"
 #import "ARLineLayerDelegate.h"
 
-#import "UIView+ComposingKit.h"
+#import "UIView+Reader.h"
+#import "CALayer+Reader.h"
 
 #import "ARTextCursor.h"
 #import "ARTextMagnifier.h"
@@ -42,6 +43,27 @@ ARCursorMake(CGPoint origin, CGFloat height)
     ARCursor a; a.origin = origin; a.height = height; return a;
 }
 
+static void ARTextDrawText(CTFrameRef textFrame,CGContextRef context) {
+    CFArrayRef lines = CTFrameGetLines(textFrame);
+    if (!lines) {
+        return;
+    }
+    CFIndex count = CFArrayGetCount(lines);
+    CGPoint origins[count];
+    CTFrameGetLineOrigins(textFrame, CFRangeMake(0,0), origins);
+    for (int i = 0; i < count; i++) {
+        CGPoint linePoint = origins[i];
+        CTLineRef line = CFArrayGetValueAtIndex(lines, i);
+        
+        
+        CFArrayRef runs = CTLineGetGlyphRuns(line);
+        for (NSUInteger r = 0, rMax = CFArrayGetCount(runs); r < rMax; r++) {
+            CTRunRef run = CFArrayGetValueAtIndex(runs, r);
+            CGContextSetTextPosition(context, linePoint.x, linePoint.y);
+            CTRunDraw(run, context, CFRangeMake(0, 0));
+        }
+    }
+}
 
 @interface ARTextView () <ARCursorViewPanDelegate,ARAsyncLayerDelegate,UIGestureRecognizerDelegate>
 /**
@@ -885,7 +907,8 @@ ARCursorMake(CGPoint origin, CGFloat height)
                 [self drawSelectionArea];
             }
             
-            CTFrameDraw(self.textFrame, context);
+//            CTFrameDraw(self.textFrame, context);
+            ARTextDrawText(self.textFrame, context);
         }
     };
     task.didDisplay = ^(CALayer *layer, BOOL finished) {
