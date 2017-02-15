@@ -9,18 +9,26 @@
 #import "ARReaderCenter.h"
 #import "ARComposing.h"
 
-#define ScreenWidth [UIScreen mainScreen].bounds.size.width
-#define ScreenHeight [UIScreen mainScreen].bounds.size.height
+#import "ARReaderMacros.h"
 
-@interface ARReaderCenter () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+#import "ARReaderKit.h"
 
-@property (nonatomic, strong) UIView            *readerNavigation;
-@property (nonatomic, strong) UIView            *readerTool;
+#import "ARReaderDataSource.h"
 
-@property (nonatomic, copy) NSString            *readerContent;
-@property (nonatomic, strong) NSArray           *readerPages;
-@property (nonatomic, strong) UICollectionView  *readerView;
-@property (nonatomic, strong) ARPageParser      *readerParser;
+#import "ARMediator.h"
+#import "ARMediator+Reader.h"
+
+
+@interface ARReaderCenter () <UICollectionViewDelegateFlowLayout>
+
+@property (nonatomic, strong) ARReaderNavigation *readerNavigation;
+@property (nonatomic, strong) ARReaderTool       *readerTool;
+@property (nonatomic, strong) ARReaderView       *readerView;
+
+@property (nonatomic, copy) NSString             *readerContent;
+@property (nonatomic, copy) NSString             *readerCellIdentifier;
+@property (nonatomic, strong) ARPageParser       *readerParser;
+@property (nonatomic, strong) ARReaderDataSource *readerDataSource;
 
 @end
 
@@ -35,40 +43,18 @@
     [self.view addSubview:self.readerNavigation];
     [self.view addSubview:self.readerTool];
     
-    self.readerPages = [self.readerParser parseContent:self.readerContent];
+    self.readerDataSource.pages = [[ARMediator sharedInstance] Reader_parseContentWithParser:self.readerParser content:self.readerContent];
     [self.readerView reloadData];
+}
+
+- (void)dealloc
+{
+    [[ARMediator sharedInstance] Reader_cleanCollectionViewCellTarget];
 }
 
 - (BOOL)prefersStatusBarHidden
 {
     return YES;
-}
-
-#pragma mark - UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
-{
-    return self.readerPages.count;
-}
-
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PageCell" forIndexPath:indexPath];
-    for (UIView *subView in cell.contentView.subviews) {
-        [subView removeFromSuperview];
-    }
-    ARPageData *pageData = [self.readerPages objectAtIndex:indexPath.item];
-    ARTextView *textView = [[ARTextView alloc] initWithFrame:CGRectMake(15, 0, ScreenWidth - 30, ScreenHeight - 80)];
-    textView.pageData = pageData;
-    textView.textColor = [UIColor colorWithHexString:@"#3A3D40"];
-    textView.font = [UIFont systemFontOfSize:21];
-    textView.indent = YES;
-    textView.lineSpacing = 10;
-    textView.titleLength = 11;
-    textView.editable = YES;
-    textView.textAlignment = NSTextAlignmentJustified;
-    textView.backgroundColor = [UIColor colorWithHexString:@"#F4F6F7"];
-    [cell.contentView addSubview:textView];
-    return cell;
 }
 
 - (void)textViewDidSelectBegin:(ARTextView *)textView
@@ -86,25 +72,14 @@
     self.readerView.scrollEnabled = YES;
 }
 
-#pragma mark - Lazy Init
+#pragma mark - Lazy Init(Custom)
 
-- (UICollectionView *)readerView
+- (ARReaderView *)readerView
 {
     if (!_readerView) {
-        UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-        layout.itemSize = CGSizeMake(ScreenWidth, ScreenHeight - 80);
-        layout.minimumLineSpacing = 0;
-        layout.minimumInteritemSpacing = 0;
-        layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-        
-        _readerView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 40, ScreenWidth, ScreenHeight - 80) collectionViewLayout:layout];
-        _readerView.pagingEnabled = YES;
-        _readerView.backgroundColor = [UIColor colorWithHexString:@"f4f6f7"];
+        _readerView = [[ARReaderView alloc] initWithCellIdentifier:@"PageCell"];
         _readerView.delegate = self;
-        _readerView.dataSource = self;
-        _readerView.showsVerticalScrollIndicator = NO;
-        _readerView.showsHorizontalScrollIndicator = NO;
-        [_readerView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"PageCell"];
+        _readerView.dataSource = self.readerDataSource;
     }
     return _readerView;
 }
@@ -112,13 +87,7 @@
 - (UIView *)readerNavigation
 {
     if (!_readerNavigation) {
-        _readerNavigation = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 64)];
-        _readerNavigation.backgroundColor = [UIColor whiteColor];
-        _readerNavigation.layer.shadowColor = [UIColor blackColor].CGColor;
-        _readerNavigation.layer.shadowOffset = CGSizeMake(0, 1);
-        _readerNavigation.layer.shadowRadius = 4;
-        _readerNavigation.layer.shadowOpacity = 0.05;
-        _readerNavigation.clipsToBounds = NO;
+        _readerNavigation = [[ARReaderNavigation alloc] init];
         _readerNavigation.hidden = YES;
     }
     return _readerNavigation;
@@ -127,13 +96,7 @@
 - (UIView *)readerTool
 {
     if (!_readerTool) {
-        _readerTool = [[UIView alloc] initWithFrame:CGRectMake(0, ScreenHeight - 44, ScreenWidth, 44)];
-        _readerTool.backgroundColor = [UIColor whiteColor];
-        _readerTool.layer.shadowColor = [UIColor blackColor].CGColor;
-        _readerTool.layer.shadowOffset = CGSizeMake(0, 1);
-        _readerTool.layer.shadowRadius = 4;
-        _readerTool.layer.shadowOpacity = 0.05;
-        _readerTool.clipsToBounds = NO;
+        _readerTool = [[ARReaderTool alloc] init];
         _readerTool.hidden = YES;
     }
     return _readerTool;
@@ -167,5 +130,14 @@
     return _readerParser;
 }
 
+- (ARReaderDataSource *)readerDataSource
+{
+    if (!_readerDataSource) {
+        _readerDataSource = [[ARReaderDataSource alloc] initWithCellIdentifier:@"PageCell" configureCellBlock:^(id cell, ARPageData *pageData) {
+            [[ARMediator sharedInstance] Reader_configCollectionViewCell:cell pageData:pageData];
+        }];
+    }
+    return _readerDataSource;
+}
 
 @end

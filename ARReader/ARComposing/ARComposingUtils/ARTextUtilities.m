@@ -8,7 +8,7 @@
 
 #import "ARTextUtilities.h"
 #import <Accelerate/Accelerate.h>
-#import "UIView+ComposingKit.h"
+#import "UIView+Reader.h"
 
 NSCharacterSet *ARTextVerticalFormRotateCharacterSet() {
     static NSMutableCharacterSet *set;

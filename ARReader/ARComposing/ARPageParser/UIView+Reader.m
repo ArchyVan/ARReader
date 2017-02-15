@@ -6,9 +6,13 @@
 //  Copyright © 2016年 Objective-C. All rights reserved.
 //
 
-#import "UIView+ComposingKit.h"
+#import "UIView+Reader.h"
+#import <objc/runtime.h>
 
-@implementation UIView (ComposingKit)
+@interface UIView_Reader: NSObject @end
+@implementation UIView_Reader @end
+
+@implementation UIView (Reader)
 
 - (void)setAr_origin:(CGPoint)ar_origin {
     CGRect frame = self.frame;
@@ -230,52 +234,63 @@
 
 @end
 
-@implementation UIColor (ComposingKit)
+@interface UIView_MainThread: NSObject @end
+@implementation UIView_MainThread @end
 
-static inline NSUInteger hexStrToInt(NSString *str) {
-    uint32_t result = 0;
-    sscanf([str UTF8String], "%X", &result);
-    return result;
-}
 
-static BOOL hexStrToRGBA(NSString *str,
-                         CGFloat *r, CGFloat *g, CGFloat *b, CGFloat *a) {
-    str = [[str stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] uppercaseString];
-    if ([str hasPrefix:@"#"]) {
-        str = [str substringFromIndex:1];
-    } else if ([str hasPrefix:@"0X"]) {
-        str = [str substringFromIndex:2];
-    }
-    
-    NSUInteger length = [str length];
-    //         RGB            RGBA          RRGGBB        RRGGBBAA
-    if (length != 3 && length != 4 && length != 6 && length != 8) {
-        return NO;
-    }
-    
-    //RGB,RGBA,RRGGBB,RRGGBBAA
-    if (length < 5) {
-        *r = hexStrToInt([str substringWithRange:NSMakeRange(0, 1)]) / 255.0f;
-        *g = hexStrToInt([str substringWithRange:NSMakeRange(1, 1)]) / 255.0f;
-        *b = hexStrToInt([str substringWithRange:NSMakeRange(2, 1)]) / 255.0f;
-        if (length == 4)  *a = hexStrToInt([str substringWithRange:NSMakeRange(3, 1)]) / 255.0f;
-        else *a = 1;
+@implementation UIView (MainThread)
+
+static inline void swizzling_exchangeMethod(Class sClass,SEL originalSelector,SEL swizzledSelector) {
+    Method originalMethod = class_getInstanceMethod(sClass, originalSelector);
+    Method swizzledMethod = class_getInstanceMethod(sClass, swizzledSelector);
+    BOOL success = class_addMethod(sClass, originalSelector,  method_getImplementation(swizzledMethod), method_getTypeEncoding(swizzledMethod));
+    if (success) {
+        class_replaceMethod(sClass, swizzledSelector, method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod));
     } else {
-        *r = hexStrToInt([str substringWithRange:NSMakeRange(0, 2)]) / 255.0f;
-        *g = hexStrToInt([str substringWithRange:NSMakeRange(2, 2)]) / 255.0f;
-        *b = hexStrToInt([str substringWithRange:NSMakeRange(4, 2)]) / 255.0f;
-        if (length == 8) *a = hexStrToInt([str substringWithRange:NSMakeRange(6, 2)]) / 255.0f;
-        else *a = 1;
+        method_exchangeImplementations(originalMethod, swizzledMethod);
     }
-    return YES;
 }
 
-+ (instancetype)colorWithHexString:(NSString *)hexStr {
-    CGFloat r, g, b, a;
-    if (hexStrToRGBA(hexStr, &r, &g, &b, &a)) {
-        return [UIColor colorWithRed:r green:g blue:b alpha:a];
-    }
-    return nil;
++ (void)load
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        SEL needsLayoutOriginalSelector = @selector(setNeedsLayout);
+        SEL needsLayoutSwizzleSelector  = @selector(guard_setNeedsLayout);
+        swizzling_exchangeMethod(self, needsLayoutOriginalSelector,needsLayoutSwizzleSelector);
+
+        SEL needsDisplaOriginalSelector = @selector(setNeedsDisplay);
+        SEL needsDisplaSwizzleSelector  = @selector(guard_setNeedsDisplay);
+        swizzling_exchangeMethod(self, needsDisplaOriginalSelector,needsDisplaSwizzleSelector);
+
+        SEL needsDisplayInRectOriginalSelector = @selector(setNeedsDisplayInRect:);
+        SEL needsDisplayInRectSwizzleSelector  = @selector(guard_setNeedsDisplayInRect:);
+        swizzling_exchangeMethod(self, needsDisplayInRectOriginalSelector,needsDisplayInRectSwizzleSelector);
+    });
+}
+
+- (void)guard_setNeedsLayout
+{
+    [self UIMainThreadCheck];
+    [self guard_setNeedsLayout];
+}
+
+- (void)guard_setNeedsDisplay
+{
+    [self UIMainThreadCheck];
+    [self guard_setNeedsDisplay];
+}
+
+- (void)guard_setNeedsDisplayInRect:(CGRect)rect
+{
+    [self UIMainThreadCheck];
+    [self guard_setNeedsDisplayInRect:rect];
+}
+
+- (void)UIMainThreadCheck
+{
+    NSString *desc = [NSString stringWithFormat:@"%@", self.class];
+    NSAssert([NSThread isMainThread], desc);
 }
 
 @end

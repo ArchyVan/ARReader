@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface UIView (ComposingKit)
+@interface UIView (Reader)
 
 #pragma mark - Convenience frame api
 /**
@@ -90,13 +90,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (CGRect)ar_convertRect:(CGRect)rect fromViewOrWindow:(UIView *)view;
 
+@end
+
+/**
+ UIView 渲染主线程检测
+ */
+@interface UIView (MainThread)
 
 @end
 
-@interface UIColor (ComposingKit)
-
-+ (nullable UIColor *)colorWithHexString:(NSString *)hexStr;
-
-@end
 
 NS_ASSUME_NONNULL_END
