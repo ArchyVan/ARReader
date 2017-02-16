@@ -20,12 +20,19 @@
     if (!CTFrame) {
         return nil;
     }
-    ARTextLayout *layout = [ARTextLayout new];
+    ARTextLayout *layout = [self new];
     layout->_isReLayout = needReLayout;
     layout->_layoutSize = size;
     layout->_fontSize = fontSize;
     [layout setCTFrame:CTFrame];
     return layout;
+}
+
+- (void)dealloc
+{
+    if (_CTFrame) {
+        CFRelease(_CTFrame);
+    }
 }
 
 - (void)setCTFrame:(CTFrameRef)CTFrame
@@ -52,7 +59,11 @@
             }
             _lines = lines;
             _wordCount = CTFrameGetVisibleStringRange(_CTFrame).length;
-            [self resetLineOriginWithLines:_lines];
+            [self resetLineOriginWithLines:lines];
+        } else {
+            _rowCount = _wordCount = _fontSize =0;
+            _lines = nil;
+            _layoutSize = CGSizeZero;
         }
     }
 }
@@ -61,13 +72,25 @@
 {
     NSUInteger realCount = floor(([UIScreen mainScreen].bounds.size.height - 80) / ([UIFont systemFontOfSize:21].lineHeight + 11.0));
     NSUInteger linesCount = lines.count;
+    //TODO 待完善，可删除Re Layout 属性，直接排版
     if (_isReLayout) {
-        
+        UIFont *font = [UIFont systemFontOfSize:_fontSize];
+        CGFloat height = (_layoutSize.height - linesCount * 11) / linesCount;
+        [lines enumerateObjectsUsingBlock:^(ARTextLine * _Nonnull line, NSUInteger idx, BOOL * _Nonnull stop) {
+            CGFloat newPositionY = (height - font.lineHeight)/2.0 + (font.lineHeight + 11) * (linesCount - idx) - font.ascender;
+            if (line.height <= font.lineHeight) {
+                line.position = CGPointMake(line.position.x, newPositionY);
+            }
+        }];
     } else {
         UIFont *font = [UIFont systemFontOfSize:_fontSize];
         CGFloat height = (_layoutSize.height - linesCount * 11) / linesCount;
-        
+        [lines enumerateObjectsUsingBlock:^(ARTextLine * _Nonnull line, NSUInteger idx, BOOL * _Nonnull stop) {
+            CGFloat newPositionY = (height - font.lineHeight)/2.0 + (font.lineHeight + 11) * (linesCount - idx) - font.ascender;
+            line.position = CGPointMake(line.position.x, newPositionY);
+        }];
     }
+    _lines = lines;
 }
 
 @end

@@ -45,22 +45,14 @@ ARCursorMake(CGPoint origin, CGFloat height)
     ARCursor a; a.origin = origin; a.height = height; return a;
 }
 
-static void ARTextDrawText(CTFrameRef textFrame,CGContextRef context) {
-    CFArrayRef lines = CTFrameGetLines(textFrame);
-    if (!lines) {
-        return;
-    }
-    CFIndex count = CFArrayGetCount(lines);
-    CGPoint origins[count];
-    CTFrameGetLineOrigins(textFrame, CFRangeMake(0,0), origins);
-    for (int i = 0; i < count; i++) {
-        CGPoint linePoint = origins[i];
-        CTLineRef line = CFArrayGetValueAtIndex(lines, i);
+static void ARTextDrawText(ARTextLayout *layout,CGContextRef context) {
+    for (int i = 0; i < layout.lines.count; i++) {
+        ARTextLine *line = [layout.lines objectAtIndex:i];
         
-        CFArrayRef runs = CTLineGetGlyphRuns(line);
+        CFArrayRef runs = CTLineGetGlyphRuns(line.CTLine);
         for (NSUInteger r = 0, rMax = CFArrayGetCount(runs); r < rMax; r++) {
             CTRunRef run = CFArrayGetValueAtIndex(runs, r);
-            CGContextSetTextPosition(context, linePoint.x, linePoint.y);
+            CGContextSetTextPosition(context, line.position.x, line.position.y);
             CTRunDraw(run, context, CFRangeMake(0, 0));
         }
     }
@@ -112,7 +104,8 @@ static void ARTextDrawText(CTFrameRef textFrame,CGContextRef context) {
 /**
  !!!核心绘制数据！！！
  */
-@property (nonatomic, assign) CTFrameRef textFrame;
+@property (nonatomic, assign) CTFrameRef            textFrame;
+@property (nonatomic, strong) ARTextLayout         *textLayout;
 
 @property (nonatomic, copy) NSDictionary *defaultAttributes;
 @property (nonatomic, copy) NSDictionary *indentAttributes;
@@ -315,6 +308,11 @@ static void ARTextDrawText(CTFrameRef textFrame,CGContextRef context) {
     /**
      添加摘录图层
      */
+    UIWindow *testWindow = [[UIWindow alloc] initWithFrame:CGRectMake(0, 0,self.bounds.size.width, self.bounds.size.height)];
+    testWindow.hidden = NO;
+    testWindow.backgroundColor = [UIColor blackColor];
+    testWindow.windowLevel = UIWindowLevelStatusBar;
+    [testWindow makeKeyAndVisible];
     [self.layer addSublayer:self.textExcerptlayer];
 }
 
@@ -685,7 +683,13 @@ static void ARTextDrawText(CTFrameRef textFrame,CGContextRef context) {
     self.textFrame = frame;
     self.excerptDelegate.pageFrame = frame;
     self.excerptDelegate.pageContent = self.pageData.pageDisplayContent;
-    [ARTextLayout layoutWithCTFrame:frame size:rect.size fontSize:self.font.pointSize];
+    if (self.pageData.pageIndex == 0) {
+        if (self.titleLength > 0) {
+            self.textLayout = [ARTextLayout layoutWithCTFrame:frame size:rect.size fontSize:self.font.pointSize needReLayout:YES];
+        }
+    } else {
+        self.textLayout = [ARTextLayout layoutWithCTFrame:frame size:rect.size fontSize:self.font.pointSize];
+    }
     CFRelease(frame);
     CFRelease(framesetter);
     CFRelease(path);
@@ -909,8 +913,7 @@ static void ARTextDrawText(CTFrameRef textFrame,CGContextRef context) {
                 [self drawSelectionArea];
             }
             
-//            CTFrameDraw(self.textFrame, context);
-            ARTextDrawText(self.textFrame, context);
+            ARTextDrawText(self.textLayout, context);
         }
     };
     task.didDisplay = ^(CALayer *layer, BOOL finished) {
