@@ -23,6 +23,8 @@
 #import "ARTextMagnifier.h"
 #import "ARTextEffectWindow.h"
 
+#import "ARTextLayout.h"
+
 typedef NS_ENUM(NSInteger, ARTextViewState){
     ARTextViewStateNormal,
     ARTextViewStateTouching,
@@ -54,7 +56,6 @@ static void ARTextDrawText(CTFrameRef textFrame,CGContextRef context) {
     for (int i = 0; i < count; i++) {
         CGPoint linePoint = origins[i];
         CTLineRef line = CFArrayGetValueAtIndex(lines, i);
-        
         
         CFArrayRef runs = CTLineGetGlyphRuns(line);
         for (NSUInteger r = 0, rMax = CFArrayGetCount(runs); r < rMax; r++) {
@@ -684,6 +685,7 @@ static void ARTextDrawText(CTFrameRef textFrame,CGContextRef context) {
     self.textFrame = frame;
     self.excerptDelegate.pageFrame = frame;
     self.excerptDelegate.pageContent = self.pageData.pageDisplayContent;
+    [ARTextLayout layoutWithCTFrame:frame size:rect.size fontSize:self.font.pointSize];
     CFRelease(frame);
     CFRelease(framesetter);
     CFRelease(path);

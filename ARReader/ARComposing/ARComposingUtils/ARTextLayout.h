@@ -14,12 +14,17 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ARTextLayout : NSObject
 
-+ (instancetype)layoutWithCTFrame:(CTFrameRef)CTFrame content:(NSString *)content;
++ (instancetype)layoutWithCTFrame:(CTFrameRef)CTFrame size:(CGSize)size fontSize:(CGFloat)fontSize;
+
++ (instancetype)layoutWithCTFrame:(CTFrameRef)CTFrame size:(CGSize)size fontSize:(CGFloat)fontSize needReLayout:(BOOL)needReLayout;
 
 @property (nonatomic, readonly) CTFrameRef CTFrame;
 @property (nonatomic, readonly) NSString   *content;
 @property (nonatomic, readonly) NSUInteger  rowCount;
 @property (nonatomic, readonly) NSUInteger  wordCount;
+@property (nonatomic, readonly) CGFloat     fontSize;
+@property (nonatomic, readonly) BOOL        isReLayout;
+@property (nonatomic, readonly) CGSize      layoutSize;
 @property (nonatomic, readonly, strong) NSArray<ARTextLine *> *lines;
 
 @end

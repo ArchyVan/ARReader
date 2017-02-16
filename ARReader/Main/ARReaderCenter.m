@@ -18,6 +18,7 @@
 #import "ARMediator.h"
 #import "ARMediator+Reader.h"
 
+#import "UIView+Quick.h"
 
 @interface ARReaderCenter () <UICollectionViewDelegateFlowLayout>
 
@@ -39,9 +40,7 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor colorWithHexString:@"f4f6f7"];
     
-    [self.view addSubview:self.readerView];
-    [self.view addSubview:self.readerNavigation];
-    [self.view addSubview:self.readerTool];
+    self.view.addSubview(self.readerView).addSubview(self.readerNavigation).addSubview(self.readerTool);
     
     self.readerDataSource.pages = [[ARMediator sharedInstance] Reader_parseContentWithParser:self.readerParser content:self.readerContent];
     [self.readerView reloadData];

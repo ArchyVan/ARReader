@@ -8,21 +8,22 @@
 
 #import "ARTextLayout.h"
 
-@interface ARTextLayout ()
-
-@property (nonatomic, readwrite) NSString *content;
-
-@end
-
 @implementation ARTextLayout
 
-+ (instancetype)layoutWithCTFrame:(CTFrameRef)CTFrame content:(NSString *)content;
++ (instancetype)layoutWithCTFrame:(CTFrameRef)CTFrame size:(CGSize)size fontSize:(CGFloat)fontSize
+{
+    return [self layoutWithCTFrame:CTFrame size:size fontSize:fontSize needReLayout:NO];
+}
+
++ (instancetype)layoutWithCTFrame:(CTFrameRef)CTFrame size:(CGSize)size fontSize:(CGFloat)fontSize needReLayout:(BOOL)needReLayout
 {
     if (!CTFrame) {
         return nil;
     }
     ARTextLayout *layout = [ARTextLayout new];
-    layout->_content = content;
+    layout->_isReLayout = needReLayout;
+    layout->_layoutSize = size;
+    layout->_fontSize = fontSize;
     [layout setCTFrame:CTFrame];
     return layout;
 }
@@ -51,24 +52,22 @@
             }
             _lines = lines;
             _wordCount = CTFrameGetVisibleStringRange(_CTFrame).length;
+            [self resetLineOriginWithLines:_lines];
         }
     }
 }
 
-/**
- TODO
-
- @param lines 当前所有行
- */
-- (void)reLayoutLine:(NSMutableArray *)lines
+- (void)resetLineOriginWithLines:(NSArray <ARTextLine *>*)lines
 {
-    NSMutableArray *reverseLines = [[[lines reverseObjectEnumerator] allObjects] mutableCopy];
-    CGFloat lineSpacing = 10;
-    [reverseLines enumerateObjectsUsingBlock:^(ARTextLine *line, NSUInteger idx, BOOL * _Nonnull stop) {
-        CGFloat padding = line.bounds.origin.y - 10;
-        CGPoint oringin = line.position;
-        oringin.y -= padding;
-    }];
+    NSUInteger realCount = floor(([UIScreen mainScreen].bounds.size.height - 80) / ([UIFont systemFontOfSize:21].lineHeight + 11.0));
+    NSUInteger linesCount = lines.count;
+    if (_isReLayout) {
+        
+    } else {
+        UIFont *font = [UIFont systemFontOfSize:_fontSize];
+        CGFloat height = (_layoutSize.height - linesCount * 11) / linesCount;
+        
+    }
 }
 
 @end
