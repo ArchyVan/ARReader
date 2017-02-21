@@ -374,17 +374,12 @@ static void ARTextDrawText(ARTextLayout *layout,CGContextRef context) {
     if (_selectionStartPosition < 0 || _selectionEndPosition > self.pageData.pageContent.length) {
         return;
     }
-    CTFrameRef textFrame = self.textFrame;
-    CFArrayRef lines = CTFrameGetLines(self.textFrame);
-    if (!lines) {
-        return;
-    }
     
     // 翻转坐标系
     CGAffineTransform transform =  CGAffineTransformMakeTranslation(0, self.bounds.size.height);
     transform = CGAffineTransformScale(transform, 1.f, -1.f);
     
-    CFIndex count = CFArrayGetCount(lines);
+    NSUInteger count = self.textLayout.lines.count;
     // 获得每一行的origin坐标
     for (int i = 0; i < count; i++) {
 //        CTLineRef line = CFArrayGetValueAtIndex(lines, i);
@@ -413,13 +408,8 @@ static void ARTextDrawText(ARTextLayout *layout,CGContextRef context) {
     if (_selectionStartPosition < 0 || _selectionEndPosition > self.pageData.pageContent.length) {
         return;
     }
-    CTFrameRef textFrame = self.textFrame;
-    CFArrayRef lines = CTFrameGetLines(self.textFrame);
-    if (!lines) {
-        return;
-    }
     
-    CFIndex count = CFArrayGetCount(lines);
+    NSUInteger count = self.textLayout.lines.count;
     for (int i = 0; i < count; i++) {
         ARTextLine *line = [self.textLayout.lines objectAtIndex:i];
         CFRange range = CTLineGetStringRange(line.CTLine);

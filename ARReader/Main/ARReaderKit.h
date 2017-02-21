@@ -19,8 +19,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithCellIdentifier:(nullable NSString *)cellIdentifier AR_DESIGNATED_INITIALIZER;
 
 - (instancetype)init AR_UNAVAILABLE_INSTEAD("initWithCellIdentifier:");
+
 - (instancetype)initWithFrame:(CGRect)frame AR_UNAVAILABLE_INSTEAD("initWithCellIdentifier:");
+
 - (instancetype)initWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout AR_UNAVAILABLE_INSTEAD("initWithCellIdentifier:");
+
 - (instancetype)initWithCoder:(NSCoder *)aDecoder AR_UNAVAILABLE_INSTEAD("initWithCellIdentifier:");
 
 @end

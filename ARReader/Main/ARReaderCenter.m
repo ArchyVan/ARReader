@@ -42,7 +42,7 @@
     
     self.view.addSubview(self.readerView).addSubview(self.readerNavigation).addSubview(self.readerTool);
     
-    self.readerDataSource.pages = [[ARMediator sharedInstance] Reader_parseContentWithParser:self.readerParser content:self.readerContent];
+    self.readerDataSource.readerPages = [[ARMediator sharedInstance] Reader_parseContentWithParser:self.readerParser content:self.readerContent];
     [self.readerView reloadData];
 }
 
@@ -87,7 +87,7 @@
 {
     if (!_readerNavigation) {
         _readerNavigation = [[ARReaderNavigation alloc] init];
-        _readerNavigation.hidden = YES;
+//        _readerNavigation.hidden = YES;
     }
     return _readerNavigation;
 }
@@ -96,7 +96,7 @@
 {
     if (!_readerTool) {
         _readerTool = [[ARReaderTool alloc] init];
-        _readerTool.hidden = YES;
+//        _readerTool.hidden = YES;
     }
     return _readerTool;
 }

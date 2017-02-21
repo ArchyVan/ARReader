@@ -14,7 +14,7 @@ typedef void(^ReaderCellConfigureBlock)(id cell,ARPageData *pageData);
 
 @interface ARReaderDataSource : NSObject <UICollectionViewDataSource>
 
-@property (nonatomic, strong) NSArray *pages;
+@property (nonatomic, strong) NSArray *readerPages;
 
 - (instancetype)initWithCellIdentifier:(NSString *)cellIdentifier configureCellBlock:(ReaderCellConfigureBlock)configureCellBlock AR_DESIGNATED_INITIALIZER;
 

@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface UIView (Quick)
-
 /**
  The block function addSubview
  
