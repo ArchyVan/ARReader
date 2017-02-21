@@ -120,7 +120,7 @@
     if (!_readerParser) {
         _readerParser = [ARPageParser sharedInstance];
         _readerParser.fontSize = 21;
-        _readerParser.titleLength = 11;
+        _readerParser.titleLength = 11 + 27;
         _readerParser.indent = YES;
         _readerParser.pageSize = CGSizeMake(ScreenWidth - 30, ScreenHeight - 80);
         _readerParser.lineSpacing = 10;

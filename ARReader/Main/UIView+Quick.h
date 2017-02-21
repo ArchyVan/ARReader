@@ -10,6 +10,56 @@
 
 @interface UIView (Quick)
 
-- (UIView *(^)(UIView *subView))addSubview;
+/**
+ The block function addSubview
+ 
+ @result self
+ */
+- (UIView *(^)(UIView *view))addSubview;
+
+/**
+ The block function sendSubviewToBack
+ 
+ @result self
+ */
+- (UIView *(^)(UIView *view))sendSubviewToBack;
+/**
+ The block function bringSubviewToFront
+ 
+ @result self
+ */
+- (UIView *(^)(UIView *view))bringSubviewToFront;
+/**
+ The block function insertSubView:AtIndex:
+ 
+ @result self
+ */
+- (UIView *(^)(UIView *view,NSInteger index))insertSubViewAtIndex;
+/**
+ The block function insertSubView:AboveSubview:
+ 
+ @result self
+ */
+- (UIView *(^)(UIView *view,UIView *siblingSubview))insertSubViewAboveSubview;
+/**
+ The block function insertSubview:BelowSubview:
+ 
+ @result self
+ */
+- (UIView *(^)(UIView *view,UIView *siblingSubview))insertSubviewBelowSubview;
+/**
+ The block function removeAllSubviews
+ 
+ @result self
+ */
+- (UIView *(^)())removeAllSubviews;
+/**
+ The block function reAddSubview
+ 
+ First remove all subviews, then add the view;
+ 
+ @result self
+ */
+- (UIView *(^)(UIView *view))reAddSubview;
 
 @end

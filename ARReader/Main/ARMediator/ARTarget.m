@@ -78,7 +78,7 @@ typedef void (^ARUrlRouterCallbackBlock)(NSDictionary *info);
     textView.font = [UIFont systemFontOfSize:21];
     textView.indent = YES;
     textView.lineSpacing = 10;
-    textView.titleLength = 11;
+    textView.titleLength = 11+27;
     textView.editable = YES;
     textView.textAlignment = NSTextAlignmentJustified;
     textView.backgroundColor = [UIColor colorWithHexString:@"#F4F6F7"];

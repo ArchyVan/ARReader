@@ -7,7 +7,6 @@
 //
 
 #import <QuartzCore/QuartzCore.h>
-
 /**
  CALayer 渲染主线程检测
  */

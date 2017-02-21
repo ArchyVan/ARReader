@@ -386,20 +386,18 @@ static void ARTextDrawText(ARTextLayout *layout,CGContextRef context) {
     
     CFIndex count = CFArrayGetCount(lines);
     // 获得每一行的origin坐标
-    CGPoint origins[count];
-    CTFrameGetLineOrigins(textFrame, CFRangeMake(0,0), origins);
     for (int i = 0; i < count; i++) {
-        CGPoint linePoint = origins[i];
-        CTLineRef line = CFArrayGetValueAtIndex(lines, i);
-        CFRange range = CTLineGetStringRange(line);
+//        CTLineRef line = CFArrayGetValueAtIndex(lines, i);
+        ARTextLine *line = [self.textLayout.lines objectAtIndex:i];
+        CFRange range = CTLineGetStringRange(line.CTLine);
         
         if ([self.composingUtils isPosition:self.selectionStartPosition inRange:range]) {
-            ARCursor startCursor = [self getLineOrigin:line position:self.selectionStartPosition point:linePoint transform:transform];
+            ARCursor startCursor = [self getLineOrigin:line.CTLine position:self.selectionStartPosition point:line.position transform:transform];
             self.topCursorView.cursorHeight = startCursor.height;
             self.topCursorView.ar_origin = startCursor.origin;
         }
         if ([self.composingUtils isPosition:self.selectionEndPosition-1 inRange:range]) {
-            ARCursor endCursor = [self getLineOrigin:line position:self.selectionEndPosition point:linePoint transform:transform];
+            ARCursor endCursor = [self getLineOrigin:line.CTLine position:self.selectionEndPosition point:line.position transform:transform];
             self.bottomCursorView.cursorHeight = endCursor.height;
             self.bottomCursorView.ar_origin = endCursor.origin;
             break;
@@ -422,12 +420,9 @@ static void ARTextDrawText(ARTextLayout *layout,CGContextRef context) {
     }
     
     CFIndex count = CFArrayGetCount(lines);
-    CGPoint origins[count];
-    CTFrameGetLineOrigins(textFrame, CFRangeMake(0, 0), origins);
     for (int i = 0; i < count; i++) {
-        CGPoint linePoint = origins[i];
-        CTLineRef line = CFArrayGetValueAtIndex(lines, i);
-        CFRange range = CTLineGetStringRange(line);
+        ARTextLine *line = [self.textLayout.lines objectAtIndex:i];
+        CFRange range = CTLineGetStringRange(line.CTLine);
         
         NSInteger location = range.location;
         NSInteger length = range.length;
@@ -437,33 +432,38 @@ static void ARTextDrawText(ARTextLayout *layout,CGContextRef context) {
         }
         
         if ([self.composingUtils isPosition:self.selectionStartPosition inRange:range] && [self.composingUtils isPosition:self.selectionEndPosition inRange:range]) {
-            CGFloat ascent, descent, leading, offset, offset2;
-            offset = CTLineGetOffsetForStringIndex(line, self.selectionStartPosition, NULL);
-            offset2 = CTLineGetOffsetForStringIndex(line, self.selectionEndPosition, NULL);
-            CTLineGetTypographicBounds(line, &ascent, &descent, &leading);
-            CGRect lineRect = CGRectMake(linePoint.x + offset, linePoint.y - descent, offset2 - offset, ascent + descent);
+            CGFloat offset, offset2;
+            offset = CTLineGetOffsetForStringIndex(line.CTLine, self.selectionStartPosition, NULL);
+            offset2 = CTLineGetOffsetForStringIndex(line.CTLine, self.selectionEndPosition, NULL);
+            CGRect lineRect = CGRectMake(line.position.x + offset, line.position.y - line.descent, offset2 - offset, line.ascent + line.descent);
             [self fillSelectionAreaInRect:lineRect];
             break;
         }
         
         if ([self.composingUtils isPosition:_selectionStartPosition inRange:range]) {
-            CGFloat ascent, descent, leading, width, offset;
-            offset = CTLineGetOffsetForStringIndex(line, _selectionStartPosition, NULL);
-            width = CTLineGetTypographicBounds(line, &ascent, &descent, &leading);
-            CGRect lineRect = CGRectMake(linePoint.x + offset, linePoint.y - descent, width - offset, ascent + descent);
+            CGFloat width, offset;
+            offset = CTLineGetOffsetForStringIndex(line.CTLine, _selectionStartPosition, NULL);
+            width = line.width;
+            CGRect lineRect = CGRectMake(line.position.x + offset, line.position.y - line.descent, width - offset, line.ascent + line.descent);
             [self fillSelectionAreaInRect:lineRect];
         } // 2.2 如果 start在line前，end在line后，则填充整个区域
         else if (_selectionStartPosition < range.location && _selectionEndPosition >= range.location + range.length) {
             CGFloat ascent, descent, leading, width;
-            width = CTLineGetTypographicBounds(line, &ascent, &descent, &leading);
-            CGRect lineRect = CGRectMake(linePoint.x, linePoint.y - descent, width, ascent + descent);
+            ascent = line.ascent;
+            descent = line.descent;
+            leading = line.leading;
+            width = line.width;
+            CGRect lineRect = CGRectMake(line.position.x, line.position.y - descent, width, ascent + descent);
             [self fillSelectionAreaInRect:lineRect];
         } // 2.3 如果start在line前，end在line中，则填充end前面的区域,break
         else if (_selectionStartPosition < range.location && [self.composingUtils isPosition:_selectionEndPosition inRange:range]) {
             CGFloat ascent, descent, leading, width, offset;
-            offset = CTLineGetOffsetForStringIndex(line, _selectionEndPosition, NULL);
-            width = CTLineGetTypographicBounds(line, &ascent, &descent, &leading);
-            CGRect lineRect = CGRectMake(linePoint.x, linePoint.y - descent, offset, ascent + descent);
+            offset = CTLineGetOffsetForStringIndex(line.CTLine, _selectionEndPosition, NULL);
+            width = line.width;
+            ascent = line.ascent;
+            descent = line.descent;
+            leading = line.leading;
+            CGRect lineRect = CGRectMake(line.position.x, line.position.y - descent, offset, ascent + descent);
             [self fillSelectionAreaInRect:lineRect];
         }
     }
@@ -622,6 +622,7 @@ static void ARTextDrawText(ARTextLayout *layout,CGContextRef context) {
     paragraphStyle.minimumLineHeight = self.font.lineHeight;
     [defaultDic setObject:self.font forKey:NSFontAttributeName];
     [defaultDic setObject:paragraphStyle forKey:NSParagraphStyleAttributeName];
+    [boldDic setObject:paragraphStyle forKey:NSParagraphStyleAttributeName];
     
     if (self.lineSpacing > 0) {
         indentParaStyle.lineSpacing = self.lineSpacing;
@@ -683,13 +684,7 @@ static void ARTextDrawText(ARTextLayout *layout,CGContextRef context) {
     self.textFrame = frame;
     self.excerptDelegate.pageFrame = frame;
     self.excerptDelegate.pageContent = self.pageData.pageDisplayContent;
-    if (self.pageData.pageIndex == 0) {
-        if (self.titleLength > 0) {
-            self.textLayout = [ARTextLayout layoutWithCTFrame:frame size:rect.size fontSize:self.font.pointSize needReLayout:YES];
-        }
-    } else {
-        self.textLayout = [ARTextLayout layoutWithCTFrame:frame size:rect.size fontSize:self.font.pointSize];
-    }
+    self.textLayout = [ARTextLayout layoutWithCTFrame:frame size:rect.size fontSize:self.font.pointSize];
     CFRelease(frame);
     CFRelease(framesetter);
     CFRelease(path);
@@ -744,7 +739,7 @@ static void ARTextDrawText(ARTextLayout *layout,CGContextRef context) {
         NSLog(@"\n Can't Edit!");
         return;
     }
-    [self becomeFirstResponder];
+    [self resignFirstResponder];
     CGPoint point = [longPressGesture locationInView:self];
     if (longPressGesture.state == UIGestureRecognizerStateBegan)
     {
@@ -799,6 +794,7 @@ static void ARTextDrawText(ARTextLayout *layout,CGContextRef context) {
             } else {
                 [self.textMenuController setMenuItems:@[self.menuExcerptItem,self.menuCreateItem,self.menuCopyItem]];
             }
+            [self becomeFirstResponder];
             if (!self.textMenuController.menuVisible) {
                 [self.textMenuController setTargetRect:rect inView:self];
                 [self.textMenuController update];

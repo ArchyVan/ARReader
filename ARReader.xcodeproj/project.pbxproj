@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		81594D171E519D7800A2F845 /* ARTextLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 81594D161E519D7800A2F845 /* ARTextLine.m */; };
-		81594D1A1E51A34400A2F845 /* ARTextLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 81594D191E51A34400A2F845 /* ARTextLayout.m */; };
+		811F234F1E5C3F6400DF8C09 /* ARTextLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 811F234A1E5C3F6400DF8C09 /* ARTextLayout.m */; };
+		811F23501E5C3F6400DF8C09 /* ARTextLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 811F234C1E5C3F6400DF8C09 /* ARTextLine.m */; };
+		811F23511E5C3F6400DF8C09 /* ARTextOutput.m in Sources */ = {isa = PBXBuildFile; fileRef = 811F234E1E5C3F6400DF8C09 /* ARTextOutput.m */; };
 		817239D61E5439A20060441C /* ARMediator+Reader.m in Sources */ = {isa = PBXBuildFile; fileRef = 817239D11E5439A20060441C /* ARMediator+Reader.m */; };
 		817239D71E5439A20060441C /* ARMediator.m in Sources */ = {isa = PBXBuildFile; fileRef = 817239D31E5439A20060441C /* ARMediator.m */; };
 		817239D81E5439A20060441C /* ARTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = 817239D51E5439A20060441C /* ARTarget.m */; };
@@ -55,10 +56,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		81594D151E519D7800A2F845 /* ARTextLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARTextLine.h; sourceTree = "<group>"; };
-		81594D161E519D7800A2F845 /* ARTextLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARTextLine.m; sourceTree = "<group>"; };
-		81594D181E51A34400A2F845 /* ARTextLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARTextLayout.h; sourceTree = "<group>"; };
-		81594D191E51A34400A2F845 /* ARTextLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARTextLayout.m; sourceTree = "<group>"; };
+		811F23491E5C3F6400DF8C09 /* ARTextLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARTextLayout.h; sourceTree = "<group>"; };
+		811F234A1E5C3F6400DF8C09 /* ARTextLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARTextLayout.m; sourceTree = "<group>"; };
+		811F234B1E5C3F6400DF8C09 /* ARTextLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARTextLine.h; sourceTree = "<group>"; };
+		811F234C1E5C3F6400DF8C09 /* ARTextLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARTextLine.m; sourceTree = "<group>"; };
+		811F234D1E5C3F6400DF8C09 /* ARTextOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARTextOutput.h; sourceTree = "<group>"; };
+		811F234E1E5C3F6400DF8C09 /* ARTextOutput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARTextOutput.m; sourceTree = "<group>"; };
 		817239D01E5439A20060441C /* ARMediator+Reader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ARMediator+Reader.h"; sourceTree = "<group>"; };
 		817239D11E5439A20060441C /* ARMediator+Reader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ARMediator+Reader.m"; sourceTree = "<group>"; };
 		817239D21E5439A20060441C /* ARMediator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARMediator.h; sourceTree = "<group>"; };
@@ -144,6 +147,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		811F23481E5C3F6400DF8C09 /* ARTextComponent */ = {
+			isa = PBXGroup;
+			children = (
+				811F23491E5C3F6400DF8C09 /* ARTextLayout.h */,
+				811F234A1E5C3F6400DF8C09 /* ARTextLayout.m */,
+				811F234B1E5C3F6400DF8C09 /* ARTextLine.h */,
+				811F234C1E5C3F6400DF8C09 /* ARTextLine.m */,
+				811F234D1E5C3F6400DF8C09 /* ARTextOutput.h */,
+				811F234E1E5C3F6400DF8C09 /* ARTextOutput.m */,
+			);
+			path = ARTextComponent;
+			sourceTree = "<group>";
+		};
 		817239CF1E5439A20060441C /* ARMediator */ = {
 			isa = PBXGroup;
 			children = (
@@ -225,6 +241,7 @@
 			isa = PBXGroup;
 			children = (
 				81889B4E1E4C390C00ADBE9A /* ARComposing.h */,
+				811F23481E5C3F6400DF8C09 /* ARTextComponent */,
 				81723A1F1E545EEC0060441C /* ARComposingCategory */,
 				81889B451E4C390C00ADBE9A /* ARAsyncLayer */,
 				81889B4F1E4C390C00ADBE9A /* ARComposingKit */,
@@ -276,10 +293,6 @@
 				81889B5E1E4C390C00ADBE9A /* ARLineManager.m */,
 				81889B5F1E4C390C00ADBE9A /* ARTextUtilities.h */,
 				81889B601E4C390C00ADBE9A /* ARTextUtilities.m */,
-				81594D181E51A34400A2F845 /* ARTextLayout.h */,
-				81594D191E51A34400A2F845 /* ARTextLayout.m */,
-				81594D151E519D7800A2F845 /* ARTextLine.h */,
-				81594D161E519D7800A2F845 /* ARTextLine.m */,
 			);
 			path = ARComposingUtils;
 			sourceTree = "<group>";
@@ -451,17 +464,18 @@
 				81889B7B1E4C390C00ADBE9A /* ARLineLayerDelegate.m in Sources */,
 				81889B811E4C390C00ADBE9A /* ARAppDelegate.m in Sources */,
 				81889B721E4C390C00ADBE9A /* ARAsyncLayer.m in Sources */,
+				811F23511E5C3F6400DF8C09 /* ARTextOutput.m in Sources */,
 				81889B781E4C390C00ADBE9A /* ARTextMagnifier.m in Sources */,
 				81889B7F1E4C390C00ADBE9A /* ARPageParser.m in Sources */,
 				817239D71E5439A20060441C /* ARMediator.m in Sources */,
 				81889B7C1E4C390C00ADBE9A /* ARLineManager.m in Sources */,
+				811F23501E5C3F6400DF8C09 /* ARTextLine.m in Sources */,
 				81723A271E545EEC0060441C /* UIColor+Reader.m in Sources */,
-				81594D1A1E51A34400A2F845 /* ARTextLayout.m in Sources */,
 				81889B751E4C390C00ADBE9A /* ARTransaction.m in Sources */,
+				811F234F1E5C3F6400DF8C09 /* ARTextLayout.m in Sources */,
 				81889B831E4C390C00ADBE9A /* main.m in Sources */,
 				81889B761E4C390C00ADBE9A /* ARTextCursor.m in Sources */,
 				81723A681E5575200060441C /* UIView+Quick.m in Sources */,
-				81594D171E519D7800A2F845 /* ARTextLine.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

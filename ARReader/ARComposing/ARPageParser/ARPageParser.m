@@ -250,6 +250,7 @@
     [defaultDic setObject:font forKey:NSFontAttributeName];
     [defaultDic setObject:paragraphStyle forKey:NSParagraphStyleAttributeName];
     [boldDic setObject:[UIFont boldSystemFontOfSize:self.fontSize + 5] forKey:NSFontAttributeName];
+    [boldDic setObject:paragraphStyle forKey:NSParagraphStyleAttributeName];
     NSMutableParagraphStyle *indentParaStyle = [[NSMutableParagraphStyle alloc] init];
     if (self.lineSpacing > 0) {
         indentParaStyle.lineSpacing = 10;

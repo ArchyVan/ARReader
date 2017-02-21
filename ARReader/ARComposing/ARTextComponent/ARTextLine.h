@@ -37,6 +37,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) CGFloat lineWidth;
 @property (nonatomic, readonly) CGFloat trailingWhitspaceWidth;
 
+@property (nonatomic, readonly) CGFloat firstGlyphFontSize;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -48,6 +48,9 @@
             if (CTLineGetGlyphCount(_CTLine) > 0) {
                 CFArrayRef runs = CTLineGetGlyphRuns(_CTLine);
                 CTRunRef run = CFArrayGetValueAtIndex(runs, 0);
+                NSDictionary *attributes = (__bridge id)CTRunGetAttributes(run);
+                UIFont *firstGlyphFont = [attributes objectForKey:@"NSFont"];
+                _firstGlyphFontSize = firstGlyphFont.pointSize;
                 CGPoint pos;
                 CTRunGetPositions(run, CFRangeMake(0, 1), &pos);
                 _firstGlyphPos = pos.x;
@@ -57,6 +60,7 @@
             _trailingWhitspaceWidth = CTLineGetTrailingWhitespaceWidth(_CTLine);
         } else {
             _lineWidth = _ascent = _descent = _leading = _firstGlyphPos = _trailingWhitspaceWidth = 0;
+            _firstGlyphFontSize = 0;
             _range = NSMakeRange(0, 0);
         }
         [self reloadBounds];
