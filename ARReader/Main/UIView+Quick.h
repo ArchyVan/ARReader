@@ -60,5 +60,11 @@
  @result self
  */
 - (UIView *(^)(UIView *view))reAddSubview;
+/**
+ The block function subviewAtIndex
+ 
+ @result subview
+ */
+- (UIView *(^)(NSInteger index))subviewAtIndex;
 
 @end

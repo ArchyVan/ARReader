@@ -10,6 +10,11 @@
 		811F234F1E5C3F6400DF8C09 /* ARTextLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 811F234A1E5C3F6400DF8C09 /* ARTextLayout.m */; };
 		811F23501E5C3F6400DF8C09 /* ARTextLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 811F234C1E5C3F6400DF8C09 /* ARTextLine.m */; };
 		811F23511E5C3F6400DF8C09 /* ARTextOutput.m in Sources */ = {isa = PBXBuildFile; fileRef = 811F234E1E5C3F6400DF8C09 /* ARTextOutput.m */; };
+		811F23951E5D5C8500DF8C09 /* ARGCDGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 811F23941E5D5C8500DF8C09 /* ARGCDGroup.m */; };
+		811F23981E5D5D6D00DF8C09 /* ARGCDQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 811F23971E5D5D6D00DF8C09 /* ARGCDQueue.m */; };
+		811F239B1E5D5DD100DF8C09 /* ARGCDSemaphore.m in Sources */ = {isa = PBXBuildFile; fileRef = 811F239A1E5D5DD100DF8C09 /* ARGCDSemaphore.m */; };
+		811F239E1E5D5EF800DF8C09 /* ARGCDTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 811F239D1E5D5EF800DF8C09 /* ARGCDTimer.m */; };
+		811F23F31E5E90A800DF8C09 /* CALayer+Quick.m in Sources */ = {isa = PBXBuildFile; fileRef = 811F23F21E5E90A800DF8C09 /* CALayer+Quick.m */; };
 		817239D61E5439A20060441C /* ARMediator+Reader.m in Sources */ = {isa = PBXBuildFile; fileRef = 817239D11E5439A20060441C /* ARMediator+Reader.m */; };
 		817239D71E5439A20060441C /* ARMediator.m in Sources */ = {isa = PBXBuildFile; fileRef = 817239D31E5439A20060441C /* ARMediator.m */; };
 		817239D81E5439A20060441C /* ARTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = 817239D51E5439A20060441C /* ARTarget.m */; };
@@ -62,6 +67,17 @@
 		811F234C1E5C3F6400DF8C09 /* ARTextLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARTextLine.m; sourceTree = "<group>"; };
 		811F234D1E5C3F6400DF8C09 /* ARTextOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARTextOutput.h; sourceTree = "<group>"; };
 		811F234E1E5C3F6400DF8C09 /* ARTextOutput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARTextOutput.m; sourceTree = "<group>"; };
+		811F23931E5D5C8500DF8C09 /* ARGCDGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARGCDGroup.h; sourceTree = "<group>"; };
+		811F23941E5D5C8500DF8C09 /* ARGCDGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARGCDGroup.m; sourceTree = "<group>"; };
+		811F23961E5D5D6D00DF8C09 /* ARGCDQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARGCDQueue.h; sourceTree = "<group>"; };
+		811F23971E5D5D6D00DF8C09 /* ARGCDQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARGCDQueue.m; sourceTree = "<group>"; };
+		811F23991E5D5DD100DF8C09 /* ARGCDSemaphore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARGCDSemaphore.h; sourceTree = "<group>"; };
+		811F239A1E5D5DD100DF8C09 /* ARGCDSemaphore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARGCDSemaphore.m; sourceTree = "<group>"; };
+		811F239C1E5D5EF800DF8C09 /* ARGCDTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARGCDTimer.h; sourceTree = "<group>"; };
+		811F239D1E5D5EF800DF8C09 /* ARGCDTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARGCDTimer.m; sourceTree = "<group>"; };
+		811F23F01E5E83DC00DF8C09 /* ARGCD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARGCD.h; sourceTree = "<group>"; };
+		811F23F11E5E90A800DF8C09 /* CALayer+Quick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+Quick.h"; sourceTree = "<group>"; };
+		811F23F21E5E90A800DF8C09 /* CALayer+Quick.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+Quick.m"; sourceTree = "<group>"; };
 		817239D01E5439A20060441C /* ARMediator+Reader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ARMediator+Reader.h"; sourceTree = "<group>"; };
 		817239D11E5439A20060441C /* ARMediator+Reader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ARMediator+Reader.m"; sourceTree = "<group>"; };
 		817239D21E5439A20060441C /* ARMediator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARMediator.h; sourceTree = "<group>"; };
@@ -160,6 +176,22 @@
 			path = ARTextComponent;
 			sourceTree = "<group>";
 		};
+		811F23921E5D5C5B00DF8C09 /* ARGCD */ = {
+			isa = PBXGroup;
+			children = (
+				811F23F01E5E83DC00DF8C09 /* ARGCD.h */,
+				811F23931E5D5C8500DF8C09 /* ARGCDGroup.h */,
+				811F23941E5D5C8500DF8C09 /* ARGCDGroup.m */,
+				811F23961E5D5D6D00DF8C09 /* ARGCDQueue.h */,
+				811F23971E5D5D6D00DF8C09 /* ARGCDQueue.m */,
+				811F23991E5D5DD100DF8C09 /* ARGCDSemaphore.h */,
+				811F239A1E5D5DD100DF8C09 /* ARGCDSemaphore.m */,
+				811F239C1E5D5EF800DF8C09 /* ARGCDTimer.h */,
+				811F239D1E5D5EF800DF8C09 /* ARGCDTimer.m */,
+			);
+			path = ARGCD;
+			sourceTree = "<group>";
+		};
 		817239CF1E5439A20060441C /* ARMediator */ = {
 			isa = PBXGroup;
 			children = (
@@ -207,6 +239,7 @@
 		81889B1E1E4C388C00ADBE9A /* ARReader */ = {
 			isa = PBXGroup;
 			children = (
+				811F23921E5D5C5B00DF8C09 /* ARGCD */,
 				81889B441E4C390C00ADBE9A /* ARComposing */,
 				81889B6F1E4C390C00ADBE9A /* Resources */,
 				81889B691E4C390C00ADBE9A /* Main */,
@@ -329,6 +362,8 @@
 				817239E11E5443CB0060441C /* ARReaderDataSource.m */,
 				81723A661E5575200060441C /* UIView+Quick.h */,
 				81723A671E5575200060441C /* UIView+Quick.m */,
+				811F23F11E5E90A800DF8C09 /* CALayer+Quick.h */,
+				811F23F21E5E90A800DF8C09 /* CALayer+Quick.m */,
 				817239D91E543A640060441C /* ARReaderMacros.h */,
 				81889B6E1E4C390C00ADBE9A /* main.m */,
 			);
@@ -447,6 +482,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				811F23951E5D5C8500DF8C09 /* ARGCDGroup.m in Sources */,
+				811F23F31E5E90A800DF8C09 /* CALayer+Quick.m in Sources */,
 				817239D61E5439A20060441C /* ARMediator+Reader.m in Sources */,
 				81889B7D1E4C390C00ADBE9A /* ARTextUtilities.m in Sources */,
 				817239E21E5443CB0060441C /* ARReaderDataSource.m in Sources */,
@@ -460,12 +497,15 @@
 				81723A1E1E5454CD0060441C /* ARReaderKit.m in Sources */,
 				81889B731E4C390C00ADBE9A /* ARDispatchQueuePool.m in Sources */,
 				81889B7E1E4C390C00ADBE9A /* ARPageData.m in Sources */,
+				811F23981E5D5D6D00DF8C09 /* ARGCDQueue.m in Sources */,
 				81889B7A1E4C390C00ADBE9A /* ARComposingUtils.m in Sources */,
+				811F239B1E5D5DD100DF8C09 /* ARGCDSemaphore.m in Sources */,
 				81889B7B1E4C390C00ADBE9A /* ARLineLayerDelegate.m in Sources */,
 				81889B811E4C390C00ADBE9A /* ARAppDelegate.m in Sources */,
 				81889B721E4C390C00ADBE9A /* ARAsyncLayer.m in Sources */,
 				811F23511E5C3F6400DF8C09 /* ARTextOutput.m in Sources */,
 				81889B781E4C390C00ADBE9A /* ARTextMagnifier.m in Sources */,
+				811F239E1E5D5EF800DF8C09 /* ARGCDTimer.m in Sources */,
 				81889B7F1E4C390C00ADBE9A /* ARPageParser.m in Sources */,
 				817239D71E5439A20060441C /* ARMediator.m in Sources */,
 				81889B7C1E4C390C00ADBE9A /* ARLineManager.m in Sources */,

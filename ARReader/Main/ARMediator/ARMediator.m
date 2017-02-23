@@ -65,7 +65,6 @@
 
 - (id)performTarget:(NSString *)targetName action:(NSString *)actionName params:(NSDictionary *)params shouldCacheTarget:(BOOL)shouldCacheTarget
 {
-    
     NSString *targetClassString = [NSString stringWithFormat:@"Target_%@", targetName];
     NSString *actionString = [NSString stringWithFormat:@"Action_%@:", actionName];
     Class targetClass;

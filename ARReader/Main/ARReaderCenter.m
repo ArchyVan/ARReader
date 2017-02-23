@@ -46,6 +46,11 @@
     [self.readerView reloadData];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+}
+
 - (void)dealloc
 {
     [[ARMediator sharedInstance] Reader_cleanCollectionViewCellTarget];
@@ -87,7 +92,7 @@
 {
     if (!_readerNavigation) {
         _readerNavigation = [[ARReaderNavigation alloc] init];
-//        _readerNavigation.hidden = YES;
+        _readerNavigation.hidden = YES;
     }
     return _readerNavigation;
 }
@@ -96,7 +101,7 @@
 {
     if (!_readerTool) {
         _readerTool = [[ARReaderTool alloc] init];
-//        _readerTool.hidden = YES;
+        _readerTool.hidden = YES;
     }
     return _readerTool;
 }

@@ -75,4 +75,11 @@ DUMMY_CLASS(UIView_Quick)
     };
 }
 
+- (UIView *(^)(NSInteger))subviewAtIndex
+{
+    return ^(NSInteger index){
+       return [self.subviews objectAtIndex:index];
+    };
+}
+
 @end

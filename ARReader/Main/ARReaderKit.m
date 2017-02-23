@@ -22,7 +22,7 @@
     if (self) {
         self.pagingEnabled = YES;
         self.backgroundColor = [UIColor colorWithHexString:@"f4f6f7"];
-        self.clipsToBounds = YES;
+        self.clipsToBounds = NO;
         self.showsVerticalScrollIndicator = NO;
         self.showsHorizontalScrollIndicator = NO;
         [self registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:cellIdentifier];
