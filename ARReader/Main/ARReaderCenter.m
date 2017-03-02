@@ -20,6 +20,13 @@
 
 #import "UIView+Quick.h"
 
+#import "ARGCD.h"
+
+#import "ARBookIndicator.h"
+
+#import <QMUIKit/QMUIKit.h>
+
+
 @interface ARReaderCenter () <UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, strong) ARReaderNavigation *readerNavigation;
@@ -30,6 +37,8 @@
 @property (nonatomic, copy) NSString             *readerCellIdentifier;
 @property (nonatomic, strong) ARPageParser       *readerParser;
 @property (nonatomic, strong) ARReaderDataSource *readerDataSource;
+
+@property (nonatomic, strong) ARBookIndicator    *readerIndicator;
 
 @end
 
@@ -42,8 +51,19 @@
     
     self.view.addSubview(self.readerView).addSubview(self.readerNavigation).addSubview(self.readerTool);
     
-    self.readerDataSource.readerPages = [[ARMediator sharedInstance] Reader_parseContentWithParser:self.readerParser content:self.readerContent];
-    [self.readerView reloadData];
+    [ARGCDQueue executeInGlobalQueue:^{
+        self.readerDataSource.readerPages = [[ARMediator sharedInstance] Reader_parseContentWithParser:self.readerParser content:self.readerContent];
+        [ARGCDQueue executeInMainQueue:^{
+            [self.readerView reloadData];
+        }];
+    }];
+    
+    UITapGestureRecognizer *tapReader = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapTest:)];
+    [self.view addGestureRecognizer:tapReader];
+}
+
+- (void)tapTest:(UITapGestureRecognizer *)tap
+{
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -125,7 +145,7 @@
     if (!_readerParser) {
         _readerParser = [ARPageParser sharedInstance];
         _readerParser.fontSize = 21;
-        _readerParser.titleLength = 11 + 27;
+        _readerParser.titleLength = 11;
         _readerParser.indent = YES;
         _readerParser.pageSize = CGSizeMake(ScreenWidth - 30, ScreenHeight - 80);
         _readerParser.lineSpacing = 10;
@@ -142,6 +162,15 @@
         }];
     }
     return _readerDataSource;
+}
+
+- (ARBookIndicator *)readerIndicator
+{
+    if (!_readerIndicator) {
+        _readerIndicator = [[ARBookIndicator alloc]initWithStyle:ARBookIndicatorStyleNormal];
+        _readerIndicator.frame = CGRectMake((ScreenWidth - 38)/2.0, (ScreenHeight - 30)/2.0, 48, 30);
+    };
+    return _readerIndicator;
 }
 
 @end

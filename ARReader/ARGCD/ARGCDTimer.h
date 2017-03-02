@@ -11,9 +11,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @class ARGCDQueue;
-
 /**
- 封装GCD 计时器，需要作为属性持有，否则执行block不会运行，source会被立即释放。
+ 封装GCD计时器，需要作为属性持有，否则执行block不会运行，source会被立即释放。
  */
 @interface ARGCDTimer : NSObject
 

@@ -51,10 +51,6 @@
  */
 @property (nonatomic, weak) id <ARTextViewDelegte>  delegate;
 /**
- ARTextView标题长度
- */
-@property (nonatomic, assign) NSInteger               titleLength;
-/**
  摘录数组
  */
 @property (nonatomic, strong) NSArray               *excerptArray;

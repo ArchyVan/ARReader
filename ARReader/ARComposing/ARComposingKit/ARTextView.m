@@ -249,15 +249,6 @@ static void ARTextDrawText(ARTextLayout *layout,CGContextRef context) {
     [self commitUpdate];
 }
 
-- (void)setTitleLength:(NSInteger)titleLength
-{
-    if (_titleLength == titleLength) {
-        return;
-    }
-    _titleLength = titleLength;
-    [self commitUpdate];
-}
-
 - (void)setTextAlignment:(NSTextAlignment)textAlignment
 {
     if (_textAlignment == textAlignment) {
@@ -651,8 +642,8 @@ static void ARTextDrawText(ARTextLayout *layout,CGContextRef context) {
     }
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:self.pageData.pageContent attributes:self.defaultAttributes];
     if (self.pageData.pageIndex == 0) {
-        if (self.boldAttributes && self.titleLength > 0) {
-            [attributedString setAttributes:self.boldAttributes range:NSMakeRange(0, self.titleLength)];
+        if (self.boldAttributes && self.pageData.pageTitleLength > 0) {
+            [attributedString setAttributes:self.boldAttributes range:NSMakeRange(0, self.pageData.pageTitleLength)];
         }
     }
     if (self.pageData.pageIndentLocation != NSNotFound) {
@@ -672,9 +663,9 @@ static void ARTextDrawText(ARTextLayout *layout,CGContextRef context) {
         frame = CTFramesetterCreateFrame(framesetter, CFRangeMake(0, 0), path, NULL);
     }
     self.textFrame = frame;
-    self.excerptDelegate.pageFrame = frame;
     self.excerptDelegate.pageContent = self.pageData.pageDisplayContent;
     self.textLayout = [ARTextLayout layoutWithCTFrame:frame size:rect.size fontSize:self.font.pointSize];
+    self.excerptDelegate.pageLayout = self.textLayout;
     CFRelease(frame);
     CFRelease(framesetter);
     CFRelease(path);

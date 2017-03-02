@@ -21,25 +21,6 @@
 @end
 
 @implementation ARLineLayerDelegate
-
-- (void)setPageFrame:(CTFrameRef)pageFrame
-{
-    if (_pageFrame != pageFrame) {
-        if (_pageFrame != nil) {
-            CFRelease(_pageFrame);
-        }
-        CFRetain(pageFrame);
-        _pageFrame = pageFrame;
-    }
-}
-
-- (void)dealloc
-{
-    if (_pageFrame != nil) {
-        CFRelease(_pageFrame);
-        _pageFrame = nil;
-    }
-}
 /**
  异步绘制代理
 
@@ -50,7 +31,7 @@
     if (!self.pageContent || self.pageContent.length == 0) {
         return nil;
     }
-    if (!self.pageFrame) {
+    if (!self.pageLayout) {
         return nil;
     }
     ARAsyncLayerDisplayTask *task = [ARAsyncLayerDisplayTask new];
@@ -86,11 +67,6 @@
     if (exStartLocation < 0 || exEndLocation > self.pageContent.length) {
         return;
     }
-    CTFrameRef textFrame = self.pageFrame;
-    CFArrayRef lines = CTFrameGetLines(textFrame);
-    if (!lines) {
-        return;
-    }
     
     CGAffineTransform transform =  CGAffineTransformMakeTranslation(0, self.composingParser.pageSize.height);
     transform = CGAffineTransformScale(transform, 1.f, -1.f);
@@ -100,13 +76,9 @@
         underlineSpacing = self.underLineSpacing;
     }
     
-    CFIndex count = CFArrayGetCount(lines);
-    CGPoint origins[count];
-    CTFrameGetLineOrigins(textFrame, CFRangeMake(0, 0), origins);
-    for (int i = 0; i < count; i++) {
-        CGPoint linePoint = origins[i];
-        CTLineRef line = CFArrayGetValueAtIndex(lines, i);
-        CFRange range = CTLineGetStringRange(line);
+    for (int i = 0; i < self.pageLayout.lines.count; i++) {
+        ARTextLine *line = [self.pageLayout.lines objectAtIndex:i];
+        CFRange range = CTLineGetStringRange(line.CTLine);
         
         NSInteger location = range.location;
         NSInteger length = range.length;
@@ -116,33 +88,28 @@
         }
         
         if ([self.composingUtils isPosition:exStartLocation inRange:range] && [self.composingUtils isPosition:exEndLocation inRange:range]) {
-            CGFloat ascent, descent, leading, offset, offset2;
-            offset = CTLineGetOffsetForStringIndex(line, exStartLocation, NULL);
-            offset2 = CTLineGetOffsetForStringIndex(line, exEndLocation, NULL);
-            CTLineGetTypographicBounds(line, &ascent, &descent, &leading);
-            CGRect lineRect = CGRectMake(linePoint.x + offset , linePoint.y - descent - underlineSpacing, offset2 - offset, 1);
+            CGFloat  offset, offset2;
+            offset = CTLineGetOffsetForStringIndex(line.CTLine, exStartLocation, NULL);
+            offset2 = CTLineGetOffsetForStringIndex(line.CTLine, exEndLocation, NULL);
+            CGRect lineRect = CGRectMake(line.position.x + offset , line.position.y - line.descent - underlineSpacing, offset2 - offset, 1);
             [self fillLineInRect:lineRect style:underlineStyle inContext:context];
             break;
         }
         
         if ([self.composingUtils isPosition:exStartLocation inRange:range]) {
-            CGFloat ascent, descent, leading, width, offset;
-            offset = CTLineGetOffsetForStringIndex(line, exStartLocation, NULL);
-            width = CTLineGetTypographicBounds(line, &ascent, &descent, &leading);
-            CGRect lineRect = CGRectMake(linePoint.x + offset , linePoint.y - descent - underlineSpacing, width - offset, 1);
+            CGFloat offset;
+            offset = CTLineGetOffsetForStringIndex(line.CTLine, exStartLocation, NULL);
+            CGRect lineRect = CGRectMake(line.position.x + offset , line.position.y - line.descent - underlineSpacing, line.width - offset, 1);
             [self fillLineInRect:lineRect style:underlineStyle inContext:context];
         }
         else if (exStartLocation < range.location && exEndLocation >= range.location + range.length) {
-            CGFloat ascent, descent, leading, width;
-            width = CTLineGetTypographicBounds(line, &ascent, &descent, &leading);
-            CGRect lineRect = CGRectMake(linePoint.x, linePoint.y - descent - underlineSpacing , width, 1);
+            CGRect lineRect = CGRectMake(line.position.x, line.position.y - line.descent - underlineSpacing , line.lineWidth, 1);
             [self fillLineInRect:lineRect style:underlineStyle inContext:context];
         }
         else if (exStartLocation < range.location && [self.composingUtils isPosition:exEndLocation inRange:range]) {
-            CGFloat ascent, descent, leading, width, offset;
-            offset = CTLineGetOffsetForStringIndex(line, exEndLocation, NULL);
-            width = CTLineGetTypographicBounds(line, &ascent, &descent, &leading);
-            CGRect lineRect = CGRectMake(linePoint.x , linePoint.y - descent - underlineSpacing, offset, 1);
+            CGFloat offset;
+            offset = CTLineGetOffsetForStringIndex(line.CTLine, exEndLocation, NULL);
+            CGRect lineRect = CGRectMake(line.position.x , line.position.y - line.descent - underlineSpacing, offset, 1);
             [self fillLineInRect:lineRect style:underlineStyle inContext:context];
         }
     }

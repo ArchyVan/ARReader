@@ -8,6 +8,8 @@
 
 #import "ARAppDelegate.h"
 #import "ARReaderCenter.h"
+#import "ARGCDCenter.h"
+
 
 @interface ARAppDelegate ()
 
@@ -24,5 +26,6 @@
     [self.window makeKeyAndVisible];
     return YES;
 }
+
 
 @end

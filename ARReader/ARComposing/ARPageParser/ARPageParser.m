@@ -140,6 +140,11 @@
             } else {
                 data.pageContent = [content substringWithRange:NSMakeRange(nRange.location, content.length - nRange.location)];
             }
+            if (i == 0) {
+                data.pageTitleLength = self.titleLength;
+            } else {
+                data.pageTitleLength = 0;
+            }
             data.pageIndex = i;
             CGSize coreTextSize = CTFramesetterSuggestFrameSizeWithConstraints(childFramesetter, CFRangeMake(0,0), nil,self.pageSize , nil);
             CGFloat textHeight = coreTextSize.height;

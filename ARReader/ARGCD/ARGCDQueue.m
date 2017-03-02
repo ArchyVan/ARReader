@@ -106,7 +106,6 @@ static ARGCDQueue * backgroundPriorityQueue;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, delay * NSEC_PER_SEC), dispatch_get_global_queue(queuePriority, 0), block);
 }
 
-#pragma mark - 创建线程
 - (instancetype)init
 {
     return [self initSerial];
@@ -144,7 +143,6 @@ static ARGCDQueue * backgroundPriorityQueue;
     return self;
 }
 
-#pragma mark - 任务
 - (void)execute:(dispatch_block_t)block
 {
     NSParameterAssert(block);
@@ -152,7 +150,7 @@ static ARGCDQueue * backgroundPriorityQueue;
     dispatch_async(self.executeQueue, block);
 }
 
-- (void)execute: (dispatch_block_t)block delay: (NSTimeInterval)delay
+- (void)execute:(dispatch_block_t)block delay: (NSTimeInterval)delay
 {
     NSParameterAssert(block);
     self.executeBlock = block;
@@ -212,7 +210,21 @@ static ARGCDQueue * backgroundPriorityQueue;
     dispatch_set_target_queue(self.executeQueue, queue.executeQueue);
 }
 
-#pragma mark - 其他操作
+- (void)blockWait
+{
+    dispatch_block_wait(self.executeBlock, DISPATCH_TIME_FOREVER);
+}
+
+- (void)blockNotify:(ar_block_t)block
+{
+    dispatch_block_notify(self.executeBlock, self.executeQueue, block);
+}
+
+- (void)blockCancel
+{
+    dispatch_block_cancel(self.executeBlock);
+}
+
 - (void)execute:(dispatch_block_t)block inGroup:(ARGCDGroup *)group
 {
     NSParameterAssert(block);

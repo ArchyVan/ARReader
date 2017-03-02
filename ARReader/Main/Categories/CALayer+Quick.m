@@ -7,6 +7,9 @@
 //
 
 #import "CALayer+Quick.h"
+#import "ARReaderMacros.h"
+
+DUMMY_CLASS(CALayer_Quick)
 
 @implementation CALayer (Quick)
 
