@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreText/CoreText.h>
+#import "ARTextLayout.h"
 
 typedef NS_OPTIONS(NSInteger, ARUnderLineStyle) {
     // style pattern (bitmask:0xF00)
@@ -46,9 +47,6 @@ typedef NS_OPTIONS(NSInteger, ARUnderLineStyle) {
  页面内容
  */
 @property (nonatomic, strong) NSString        *pageContent;
-/**
- 页面CoreTextFrame,用于绘制
- */
-@property (nonatomic, assign) CTFrameRef       pageFrame;
 
+@property (nonatomic, strong) ARTextLayout    *pageLayout;
 @end

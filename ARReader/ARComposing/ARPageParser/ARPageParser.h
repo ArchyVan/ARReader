@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "ARPageData.h"
 
+/**
+ 页面解析组件
+ */
 @interface ARPageParser : NSObject
 /**
  解析页面尺寸

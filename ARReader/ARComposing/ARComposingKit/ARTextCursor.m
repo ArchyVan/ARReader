@@ -46,9 +46,9 @@
     CGContextRef context = UIGraphicsGetCurrentContext();
     // draw point
     if (self.cursorType == ARTextCursorTop) {
-        CGContextAddEllipseInRect(context, CGRectMake(20, 15, 8, 8));
+        CGContextAddEllipseInRect(context, CGRectMake(19, 14, 10, 10));
     } else {
-        CGContextAddEllipseInRect(context, CGRectMake(20, self.cursorHeight + 17, 8, 8));
+        CGContextAddEllipseInRect(context, CGRectMake(19, self.cursorHeight + 16, 10, 10));
     }
     CGContextSetFillColorWithColor(context, self.cursorColor.CGColor);
     CGContextFillPath(context);

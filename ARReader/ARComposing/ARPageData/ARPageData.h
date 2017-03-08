@@ -45,6 +45,10 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (assign, nonatomic) CGFloat             pageHeight;
 /**
+ 页面中标题长度
+ */
+@property (assign, nonatomic) CGFloat             pageTitleLength;
+/**
  将页面数据转换成字典方便本地
 
  @return 页面字典

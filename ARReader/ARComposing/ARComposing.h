@@ -23,6 +23,10 @@
 #import "ARTextMagnifier.h"
 #import "ARTextEffectWindow.h"
 
+#import "ARTextLine.h"
+#import "ARTextLayout.h"
+#import "ARTextOutput.h"
+
 #import "UIView+Reader.h"
 #import "UIColor+Reader.h"
 #import "CALayer+Reader.h"
