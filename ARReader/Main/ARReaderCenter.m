@@ -18,6 +18,13 @@
 #import "ARMediator.h"
 #import "ARMediator+Reader.h"
 
+#import "UIView+Quick.h"
+
+#import "ARGCD.h"
+
+#import "ARBookIndicator.h"
+
+#import <QMUIKit/QMUIKit.h>
 
 @interface ARReaderCenter () <UICollectionViewDelegateFlowLayout>
 
@@ -30,6 +37,8 @@
 @property (nonatomic, strong) ARPageParser       *readerParser;
 @property (nonatomic, strong) ARReaderDataSource *readerDataSource;
 
+@property (nonatomic, strong) ARBookIndicator    *readerIndicator;
+
 @end
 
 @implementation ARReaderCenter
@@ -39,12 +48,26 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor colorWithHexString:@"f4f6f7"];
     
-    [self.view addSubview:self.readerView];
-    [self.view addSubview:self.readerNavigation];
-    [self.view addSubview:self.readerTool];
+    self.view.addSubview(self.readerView).addSubview(self.readerNavigation).addSubview(self.readerTool);
     
-    self.readerDataSource.pages = [[ARMediator sharedInstance] Reader_parseContentWithParser:self.readerParser content:self.readerContent];
-    [self.readerView reloadData];
+    [ARGCDQueue executeInGlobalQueue:^{
+        self.readerDataSource.readerPages = [[ARMediator sharedInstance] Reader_parseContentWithParser:self.readerParser content:self.readerContent];
+        [ARGCDQueue executeInMainQueue:^{
+            [self.readerView reloadData];
+        }];
+    }];
+    
+    UITapGestureRecognizer *tapReader = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapTest:)];
+    [self.view addGestureRecognizer:tapReader];
+}
+
+- (void)tapTest:(UITapGestureRecognizer *)tap
+{
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
 }
 
 - (void)dealloc
@@ -71,6 +94,7 @@
 {
     self.readerView.scrollEnabled = YES;
 }
+
 
 #pragma mark - Lazy Init(Custom)
 
@@ -105,12 +129,12 @@
 - (NSString *)readerContent
 {
     if (!_readerContent) {
-        //        NSString *path = [[NSBundle mainBundle] pathForResource:@"sishen" ofType:@"txt"];
-        //        unsigned long encode = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
-        //        NSData *responseData = [NSData dataWithContentsOfFile:path];
-        //        NSString *content = [[NSString alloc] initWithData:responseData encoding:encode];
-        NSString *newPath = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"txt"];
-        NSString *content = [[NSString alloc] initWithContentsOfFile:newPath encoding:NSUTF8StringEncoding error:nil];
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"tianzhubian" ofType:@"txt"];
+        unsigned long encode = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
+        NSData *responseData = [NSData dataWithContentsOfFile:path];
+        NSString *content = [[NSString alloc] initWithData:responseData encoding:encode];
+        //        NSString *newPath = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"txt"];
+        //        NSString *content = [[NSString alloc] initWithContentsOfFile:newPath encoding:NSUTF8StringEncoding error:nil];
         _readerContent = content;
     }
     return _readerContent;
@@ -138,6 +162,15 @@
         }];
     }
     return _readerDataSource;
+}
+
+- (ARBookIndicator *)readerIndicator
+{
+    if (!_readerIndicator) {
+        _readerIndicator = [[ARBookIndicator alloc]initWithStyle:ARBookIndicatorStyleNormal];
+        _readerIndicator.frame = CGRectMake((ScreenWidth - 38)/2.0, (ScreenHeight - 30)/2.0, 48, 30);
+    };
+    return _readerIndicator;
 }
 
 @end

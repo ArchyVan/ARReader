@@ -23,6 +23,8 @@
 #import "ARTextMagnifier.h"
 #import "ARTextEffectWindow.h"
 
+#import "ARTextLayout.h"
+
 typedef NS_ENUM(NSInteger, ARTextViewState){
     ARTextViewStateNormal,
     ARTextViewStateTouching,
@@ -43,23 +45,14 @@ ARCursorMake(CGPoint origin, CGFloat height)
     ARCursor a; a.origin = origin; a.height = height; return a;
 }
 
-static void ARTextDrawText(CTFrameRef textFrame,CGContextRef context) {
-    CFArrayRef lines = CTFrameGetLines(textFrame);
-    if (!lines) {
-        return;
-    }
-    CFIndex count = CFArrayGetCount(lines);
-    CGPoint origins[count];
-    CTFrameGetLineOrigins(textFrame, CFRangeMake(0,0), origins);
-    for (int i = 0; i < count; i++) {
-        CGPoint linePoint = origins[i];
-        CTLineRef line = CFArrayGetValueAtIndex(lines, i);
+static void ARTextDrawText(ARTextLayout *layout,CGContextRef context) {
+    for (int i = 0; i < layout.lines.count; i++) {
+        ARTextLine *line = [layout.lines objectAtIndex:i];
         
-        
-        CFArrayRef runs = CTLineGetGlyphRuns(line);
+        CFArrayRef runs = CTLineGetGlyphRuns(line.CTLine);
         for (NSUInteger r = 0, rMax = CFArrayGetCount(runs); r < rMax; r++) {
             CTRunRef run = CFArrayGetValueAtIndex(runs, r);
-            CGContextSetTextPosition(context, linePoint.x, linePoint.y);
+            CGContextSetTextPosition(context, line.position.x, line.position.y);
             CTRunDraw(run, context, CFRangeMake(0, 0));
         }
     }
@@ -111,7 +104,8 @@ static void ARTextDrawText(CTFrameRef textFrame,CGContextRef context) {
 /**
  !!!核心绘制数据！！！
  */
-@property (nonatomic, assign) CTFrameRef textFrame;
+@property (nonatomic, assign) CTFrameRef            textFrame;
+@property (nonatomic, strong) ARTextLayout         *textLayout;
 
 @property (nonatomic, copy) NSDictionary *defaultAttributes;
 @property (nonatomic, copy) NSDictionary *indentAttributes;
@@ -255,15 +249,6 @@ static void ARTextDrawText(CTFrameRef textFrame,CGContextRef context) {
     [self commitUpdate];
 }
 
-- (void)setTitleLength:(NSInteger)titleLength
-{
-    if (_titleLength == titleLength) {
-        return;
-    }
-    _titleLength = titleLength;
-    [self commitUpdate];
-}
-
 - (void)setTextAlignment:(NSTextAlignment)textAlignment
 {
     if (_textAlignment == textAlignment) {
@@ -314,6 +299,11 @@ static void ARTextDrawText(CTFrameRef textFrame,CGContextRef context) {
     /**
      添加摘录图层
      */
+    UIWindow *testWindow = [[UIWindow alloc] initWithFrame:CGRectMake(0, 0,self.bounds.size.width, self.bounds.size.height)];
+    testWindow.hidden = NO;
+    testWindow.backgroundColor = [UIColor blackColor];
+    testWindow.windowLevel = UIWindowLevelStatusBar;
+    [testWindow makeKeyAndVisible];
     [self.layer addSublayer:self.textExcerptlayer];
 }
 
@@ -375,32 +365,25 @@ static void ARTextDrawText(CTFrameRef textFrame,CGContextRef context) {
     if (_selectionStartPosition < 0 || _selectionEndPosition > self.pageData.pageContent.length) {
         return;
     }
-    CTFrameRef textFrame = self.textFrame;
-    CFArrayRef lines = CTFrameGetLines(self.textFrame);
-    if (!lines) {
-        return;
-    }
     
     // 翻转坐标系
     CGAffineTransform transform =  CGAffineTransformMakeTranslation(0, self.bounds.size.height);
     transform = CGAffineTransformScale(transform, 1.f, -1.f);
     
-    CFIndex count = CFArrayGetCount(lines);
+    NSUInteger count = self.textLayout.lines.count;
     // 获得每一行的origin坐标
-    CGPoint origins[count];
-    CTFrameGetLineOrigins(textFrame, CFRangeMake(0,0), origins);
     for (int i = 0; i < count; i++) {
-        CGPoint linePoint = origins[i];
-        CTLineRef line = CFArrayGetValueAtIndex(lines, i);
-        CFRange range = CTLineGetStringRange(line);
+//        CTLineRef line = CFArrayGetValueAtIndex(lines, i);
+        ARTextLine *line = [self.textLayout.lines objectAtIndex:i];
+        CFRange range = CTLineGetStringRange(line.CTLine);
         
         if ([self.composingUtils isPosition:self.selectionStartPosition inRange:range]) {
-            ARCursor startCursor = [self getLineOrigin:line position:self.selectionStartPosition point:linePoint transform:transform];
+            ARCursor startCursor = [self getLineOrigin:line.CTLine position:self.selectionStartPosition point:line.position transform:transform];
             self.topCursorView.cursorHeight = startCursor.height;
             self.topCursorView.ar_origin = startCursor.origin;
         }
         if ([self.composingUtils isPosition:self.selectionEndPosition-1 inRange:range]) {
-            ARCursor endCursor = [self getLineOrigin:line position:self.selectionEndPosition point:linePoint transform:transform];
+            ARCursor endCursor = [self getLineOrigin:line.CTLine position:self.selectionEndPosition point:line.position transform:transform];
             self.bottomCursorView.cursorHeight = endCursor.height;
             self.bottomCursorView.ar_origin = endCursor.origin;
             break;
@@ -416,19 +399,11 @@ static void ARTextDrawText(CTFrameRef textFrame,CGContextRef context) {
     if (_selectionStartPosition < 0 || _selectionEndPosition > self.pageData.pageContent.length) {
         return;
     }
-    CTFrameRef textFrame = self.textFrame;
-    CFArrayRef lines = CTFrameGetLines(self.textFrame);
-    if (!lines) {
-        return;
-    }
     
-    CFIndex count = CFArrayGetCount(lines);
-    CGPoint origins[count];
-    CTFrameGetLineOrigins(textFrame, CFRangeMake(0, 0), origins);
+    NSUInteger count = self.textLayout.lines.count;
     for (int i = 0; i < count; i++) {
-        CGPoint linePoint = origins[i];
-        CTLineRef line = CFArrayGetValueAtIndex(lines, i);
-        CFRange range = CTLineGetStringRange(line);
+        ARTextLine *line = [self.textLayout.lines objectAtIndex:i];
+        CFRange range = CTLineGetStringRange(line.CTLine);
         
         NSInteger location = range.location;
         NSInteger length = range.length;
@@ -438,33 +413,38 @@ static void ARTextDrawText(CTFrameRef textFrame,CGContextRef context) {
         }
         
         if ([self.composingUtils isPosition:self.selectionStartPosition inRange:range] && [self.composingUtils isPosition:self.selectionEndPosition inRange:range]) {
-            CGFloat ascent, descent, leading, offset, offset2;
-            offset = CTLineGetOffsetForStringIndex(line, self.selectionStartPosition, NULL);
-            offset2 = CTLineGetOffsetForStringIndex(line, self.selectionEndPosition, NULL);
-            CTLineGetTypographicBounds(line, &ascent, &descent, &leading);
-            CGRect lineRect = CGRectMake(linePoint.x + offset, linePoint.y - descent, offset2 - offset, ascent + descent);
+            CGFloat offset, offset2;
+            offset = CTLineGetOffsetForStringIndex(line.CTLine, self.selectionStartPosition, NULL);
+            offset2 = CTLineGetOffsetForStringIndex(line.CTLine, self.selectionEndPosition, NULL);
+            CGRect lineRect = CGRectMake(line.position.x + offset, line.position.y - line.descent, offset2 - offset, line.ascent + line.descent);
             [self fillSelectionAreaInRect:lineRect];
             break;
         }
         
         if ([self.composingUtils isPosition:_selectionStartPosition inRange:range]) {
-            CGFloat ascent, descent, leading, width, offset;
-            offset = CTLineGetOffsetForStringIndex(line, _selectionStartPosition, NULL);
-            width = CTLineGetTypographicBounds(line, &ascent, &descent, &leading);
-            CGRect lineRect = CGRectMake(linePoint.x + offset, linePoint.y - descent, width - offset, ascent + descent);
+            CGFloat width, offset;
+            offset = CTLineGetOffsetForStringIndex(line.CTLine, _selectionStartPosition, NULL);
+            width = line.width;
+            CGRect lineRect = CGRectMake(line.position.x + offset, line.position.y - line.descent, width - offset, line.ascent + line.descent);
             [self fillSelectionAreaInRect:lineRect];
         } // 2.2 如果 start在line前，end在line后，则填充整个区域
         else if (_selectionStartPosition < range.location && _selectionEndPosition >= range.location + range.length) {
             CGFloat ascent, descent, leading, width;
-            width = CTLineGetTypographicBounds(line, &ascent, &descent, &leading);
-            CGRect lineRect = CGRectMake(linePoint.x, linePoint.y - descent, width, ascent + descent);
+            ascent = line.ascent;
+            descent = line.descent;
+            leading = line.leading;
+            width = line.width;
+            CGRect lineRect = CGRectMake(line.position.x, line.position.y - descent, width, ascent + descent);
             [self fillSelectionAreaInRect:lineRect];
         } // 2.3 如果start在line前，end在line中，则填充end前面的区域,break
         else if (_selectionStartPosition < range.location && [self.composingUtils isPosition:_selectionEndPosition inRange:range]) {
             CGFloat ascent, descent, leading, width, offset;
-            offset = CTLineGetOffsetForStringIndex(line, _selectionEndPosition, NULL);
-            width = CTLineGetTypographicBounds(line, &ascent, &descent, &leading);
-            CGRect lineRect = CGRectMake(linePoint.x, linePoint.y - descent, offset, ascent + descent);
+            offset = CTLineGetOffsetForStringIndex(line.CTLine, _selectionEndPosition, NULL);
+            width = line.width;
+            ascent = line.ascent;
+            descent = line.descent;
+            leading = line.leading;
+            CGRect lineRect = CGRectMake(line.position.x, line.position.y - descent, offset, ascent + descent);
             [self fillSelectionAreaInRect:lineRect];
         }
     }
@@ -623,6 +603,7 @@ static void ARTextDrawText(CTFrameRef textFrame,CGContextRef context) {
     paragraphStyle.minimumLineHeight = self.font.lineHeight;
     [defaultDic setObject:self.font forKey:NSFontAttributeName];
     [defaultDic setObject:paragraphStyle forKey:NSParagraphStyleAttributeName];
+    [boldDic setObject:paragraphStyle forKey:NSParagraphStyleAttributeName];
     
     if (self.lineSpacing > 0) {
         indentParaStyle.lineSpacing = self.lineSpacing;
@@ -661,8 +642,8 @@ static void ARTextDrawText(CTFrameRef textFrame,CGContextRef context) {
     }
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:self.pageData.pageContent attributes:self.defaultAttributes];
     if (self.pageData.pageIndex == 0) {
-        if (self.boldAttributes && self.titleLength > 0) {
-            [attributedString setAttributes:self.boldAttributes range:NSMakeRange(0, self.titleLength)];
+        if (self.boldAttributes && self.pageData.pageTitleLength > 0) {
+            [attributedString setAttributes:self.boldAttributes range:NSMakeRange(0, self.pageData.pageTitleLength)];
         }
     }
     if (self.pageData.pageIndentLocation != NSNotFound) {
@@ -682,8 +663,9 @@ static void ARTextDrawText(CTFrameRef textFrame,CGContextRef context) {
         frame = CTFramesetterCreateFrame(framesetter, CFRangeMake(0, 0), path, NULL);
     }
     self.textFrame = frame;
-    self.excerptDelegate.pageFrame = frame;
     self.excerptDelegate.pageContent = self.pageData.pageDisplayContent;
+    self.textLayout = [ARTextLayout layoutWithCTFrame:frame size:rect.size fontSize:self.font.pointSize];
+    self.excerptDelegate.pageLayout = self.textLayout;
     CFRelease(frame);
     CFRelease(framesetter);
     CFRelease(path);
@@ -738,7 +720,7 @@ static void ARTextDrawText(CTFrameRef textFrame,CGContextRef context) {
         NSLog(@"\n Can't Edit!");
         return;
     }
-    [self becomeFirstResponder];
+    [self resignFirstResponder];
     CGPoint point = [longPressGesture locationInView:self];
     if (longPressGesture.state == UIGestureRecognizerStateBegan)
     {
@@ -793,6 +775,7 @@ static void ARTextDrawText(CTFrameRef textFrame,CGContextRef context) {
             } else {
                 [self.textMenuController setMenuItems:@[self.menuExcerptItem,self.menuCreateItem,self.menuCopyItem]];
             }
+            [self becomeFirstResponder];
             if (!self.textMenuController.menuVisible) {
                 [self.textMenuController setTargetRect:rect inView:self];
                 [self.textMenuController update];
@@ -907,8 +890,7 @@ static void ARTextDrawText(CTFrameRef textFrame,CGContextRef context) {
                 [self drawSelectionArea];
             }
             
-//            CTFrameDraw(self.textFrame, context);
-            ARTextDrawText(self.textFrame, context);
+            ARTextDrawText(self.textLayout, context);
         }
     };
     task.didDisplay = ^(CALayer *layer, BOOL finished) {

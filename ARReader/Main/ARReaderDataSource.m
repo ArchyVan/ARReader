@@ -34,19 +34,19 @@
 
 - (instancetype)pageDataAtIndexPath:(NSIndexPath *)indexPath
 {
-    return self.pages[indexPath.item];
+    return self.readerPages[indexPath.item];
 }
 
 #pragma mark - UICollectionViewDataSource
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return self.pages.count;
+    return self.readerPages.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     UICollectionViewCell *cell = [[ARMediator sharedInstance] Reader_cellWithIdentifier:self.cellIdentifer collectionView:collectionView indexPath:indexPath];
-    ARPageData *pageData = [self.pages objectAtIndex:indexPath.item];
+    ARPageData *pageData = [self.readerPages objectAtIndex:indexPath.item];
     self.configureCellBlock(cell,pageData);
     return cell;
 }

@@ -10,6 +10,9 @@
 #import "ARPageData.h"
 
 @protocol ARTextViewDelegte;
+/**
+ 页面展示组件
+ */
 @interface ARTextView : UIView
 /**
  ARTextView页面数据
@@ -47,10 +50,6 @@
  ARTextView对应代理
  */
 @property (nonatomic, weak) id <ARTextViewDelegte>  delegate;
-/**
- ARTextView标题长度
- */
-@property (nonatomic, assign) NSInteger               titleLength;
 /**
  摘录数组
  */

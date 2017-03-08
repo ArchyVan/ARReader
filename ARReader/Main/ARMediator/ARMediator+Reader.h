@@ -21,6 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)Reader_configCollectionViewCell:(UICollectionViewCell *)cell pageData:(ARPageData *)pageData;
 
+
 - (void)Reader_cleanCollectionViewCellTarget;
 
 @end
