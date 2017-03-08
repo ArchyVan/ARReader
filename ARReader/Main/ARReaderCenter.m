@@ -26,7 +26,6 @@
 
 #import <QMUIKit/QMUIKit.h>
 
-
 @interface ARReaderCenter () <UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, strong) ARReaderNavigation *readerNavigation;
@@ -96,6 +95,7 @@
     self.readerView.scrollEnabled = YES;
 }
 
+
 #pragma mark - Lazy Init(Custom)
 
 - (ARReaderView *)readerView
@@ -129,12 +129,12 @@
 - (NSString *)readerContent
 {
     if (!_readerContent) {
-        //        NSString *path = [[NSBundle mainBundle] pathForResource:@"sishen" ofType:@"txt"];
-        //        unsigned long encode = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
-        //        NSData *responseData = [NSData dataWithContentsOfFile:path];
-        //        NSString *content = [[NSString alloc] initWithData:responseData encoding:encode];
-        NSString *newPath = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"txt"];
-        NSString *content = [[NSString alloc] initWithContentsOfFile:newPath encoding:NSUTF8StringEncoding error:nil];
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"tianzhubian" ofType:@"txt"];
+        unsigned long encode = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
+        NSData *responseData = [NSData dataWithContentsOfFile:path];
+        NSString *content = [[NSString alloc] initWithData:responseData encoding:encode];
+        //        NSString *newPath = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"txt"];
+        //        NSString *content = [[NSString alloc] initWithContentsOfFile:newPath encoding:NSUTF8StringEncoding error:nil];
         _readerContent = content;
     }
     return _readerContent;

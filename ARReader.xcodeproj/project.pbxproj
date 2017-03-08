@@ -27,6 +27,8 @@
 		5129E778E8D686BC90D6969C0DD675CA /* test.txt in Resources */ = {isa = PBXBuildFile; fileRef = B25EE18C30CDFFFBB5D5AC8330F2DEAA /* test.txt */; };
 		5B03465B2ADD0C649F4A62D25BD5A8BC /* ARTextOutput.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C8552683B06E9F8B18B4BB3E76ADFB8 /* ARTextOutput.m */; };
 		7E123888576D7F0E39BF26F9CFB0797A /* ARPageParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B64762C853BD678E663B3ECDA4D936A /* ARPageParser.m */; };
+		816D5A7A1E70549200B35474 /* tianzhubian.txt in Resources */ = {isa = PBXBuildFile; fileRef = 816D5A791E70549200B35474 /* tianzhubian.txt */; };
+		8175114B1E6A8A5E00B3BB51 /* UIResponder+Router.m in Sources */ = {isa = PBXBuildFile; fileRef = 8175114A1E6A8A5E00B3BB51 /* UIResponder+Router.m */; };
 		8F91E4F00AE37BA815F4634CEE15B18F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15781388AE614BA05A9386314C01C76C /* Assets.xcassets */; };
 		931F5C259385AB07351BB71675C8CB8C /* ARReaderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 685ED8A11D46D95F05C372650F21A000 /* ARReaderTest.m */; };
 		93E6616772A4780D1FCEE161A81D091A /* ARTextCursor.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C883E6887715A509595E39F7793373B /* ARTextCursor.m */; };
@@ -57,19 +59,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		E59DCB2AC7ECCEA37EBEF9468A3A5794 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7E652BB1137A9A66BED95BB9CBCDA7FF /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0D2DC54A167F7401F89AD295983737C6;
-			remoteInfo = ARReaderWidget;
-		};
 		82BF36B73071AEDD7E5974FE3D531569 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7E652BB1137A9A66BED95BB9CBCDA7FF /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = B106A3BFAD171C7AB1439686667E3DA7;
 			remoteInfo = ARReader;
+		};
+		E59DCB2AC7ECCEA37EBEF9468A3A5794 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7E652BB1137A9A66BED95BB9CBCDA7FF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0D2DC54A167F7401F89AD295983737C6;
+			remoteInfo = ARReaderWidget;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -136,6 +138,9 @@
 		7C883E6887715A509595E39F7793373B /* ARTextCursor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARTextCursor.m; sourceTree = "<group>"; };
 		7ECDBC0EDB536606FBEA006090518AFA /* ARGCDGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARGCDGroup.m; sourceTree = "<group>"; };
 		80E600EDC99753CB716164E60A4B7FBE /* ARMediator+Reader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ARMediator+Reader.h"; sourceTree = "<group>"; };
+		816D5A791E70549200B35474 /* tianzhubian.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tianzhubian.txt; sourceTree = "<group>"; };
+		817511491E6A8A5E00B3BB51 /* UIResponder+Router.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIResponder+Router.h"; sourceTree = "<group>"; };
+		8175114A1E6A8A5E00B3BB51 /* UIResponder+Router.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIResponder+Router.m"; sourceTree = "<group>"; };
 		841DFFBC93A919A60ABE43744A875022 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8C8552683B06E9F8B18B4BB3E76ADFB8 /* ARTextOutput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARTextOutput.m; sourceTree = "<group>"; };
 		8E9B0CF080669255C28BB4B73B4B83FF /* ARLineManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARLineManager.h; sourceTree = "<group>"; };
@@ -193,6 +198,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2F26DCA637BA16381DD982F51E4D7425 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		83CBD5C9C0037F1EE0C3A2958E45F8A8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -201,200 +213,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2F26DCA637BA16381DD982F51E4D7425 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		AAE6FB6EF95D0C80C15D40FC6A0B6612 /* ARTextComponent */ = {
-			isa = PBXGroup;
-			children = (
-				E77417B24A44D78FC9512E526DCBA1AA /* ARTextLayout.h */,
-				D75FEC0A34392304B8E4D78CD99E320E /* ARTextLayout.m */,
-				A6153FB18E547F4B111FD6E99B109DD8 /* ARTextLine.h */,
-				E1105EC449FB4F577129797CFA11DBA8 /* ARTextLine.m */,
-				1DB88E4BC2CAC132CCD0684523B244DC /* ARTextOutput.h */,
-				8C8552683B06E9F8B18B4BB3E76ADFB8 /* ARTextOutput.m */,
-			);
-			path = ARTextComponent;
-			sourceTree = "<group>";
-		};
-		6DD1A6ED6A5A921E57C2858E16725509 /* ARGCD */ = {
-			isa = PBXGroup;
-			children = (
-				5365E50BD76AFC22B3BC8CB0D487079B /* ARGCD.h */,
-				91FD85E1977197E62688BCCEBF9B307F /* ARGCDGroup.h */,
-				7ECDBC0EDB536606FBEA006090518AFA /* ARGCDGroup.m */,
-				13E3A398F62DECBE002B619D9F26522E /* ARGCDQueue.h */,
-				7B010B6C3141E3C53931157EDEA3C1F4 /* ARGCDQueue.m */,
-				EDEEEAACB4D7AEE5FFC7FF05AC9EB00D /* ARGCDSemaphore.h */,
-				E56652C259DCEA863BB5EDBDA06199D5 /* ARGCDSemaphore.m */,
-				625C231C1697DEE816819CBD093EF372 /* ARGCDTimer.h */,
-				7931BDF04D0E518786F36F4B7FF35E26 /* ARGCDTimer.m */,
-			);
-			path = ARGCD;
-			sourceTree = "<group>";
-		};
-		CB9B09A07FF5A797EDDAAB97038FC740 /* Main */ = {
-			isa = PBXGroup;
-			children = (
-				85E40B3A30DF406ED59483017F77A058 /* ARMediator */,
-				7CC355A9BDDFEA9CC69BEAA0C013965D /* Categories */,
-				65344054B751F06161217595F0C49492 /* Components */,
-				8B9D3CA9130F873436E2353D07EC375E /* Other */,
-				348F1A6105CA8CB4B1DC2657DEC830F3 /* ARGCDCenter.h */,
-				C79075C033ADED46276E55A2E68123B6 /* ARGCDCenter.m */,
-				3FE4101ECAE96AD372FA0DD05143AF39 /* ARReaderCenter.h */,
-				71BB2CD797C8263563D4424FBA73FA89 /* ARReaderCenter.m */,
-				9AD6E360D91935CFC08DFBFA44C759C2 /* ARReaderDataSource.h */,
-				16B97067A07FFF763BAA8C638EC96E6D /* ARReaderDataSource.m */,
-			);
-			path = Main;
-			sourceTree = "<group>";
-		};
-		85E40B3A30DF406ED59483017F77A058 /* ARMediator */ = {
-			isa = PBXGroup;
-			children = (
-				80E600EDC99753CB716164E60A4B7FBE /* ARMediator+Reader.h */,
-				75389FEC37B5474791430E7E3FD6F090 /* ARMediator+Reader.m */,
-				EC10755665E7EC09A10F4A0965E51921 /* ARMediator.h */,
-				637572F02F71CE65CE5A33C1E5902668 /* ARMediator.m */,
-				B310AB09A896FDEC053C4507BE4274A2 /* ARTarget.h */,
-				C74D599D530AF4B0DA26D9CE64E72165 /* ARTarget.m */,
-			);
-			path = ARMediator;
-			sourceTree = "<group>";
-		};
-		7CC355A9BDDFEA9CC69BEAA0C013965D /* Categories */ = {
-			isa = PBXGroup;
-			children = (
-				F125173ECADDB1536CC5EEF745FB6441 /* CALayer+Quick.h */,
-				75C29AFC2D399E106199028FB455747F /* CALayer+Quick.m */,
-				D33DF443F1732D83DBCC6EFF5B7D7C5F /* UIView+Quick.h */,
-				EE7FFFA93D0B3AAF35E02635BD2D4780 /* UIView+Quick.m */,
-			);
-			path = Categories;
-			sourceTree = "<group>";
-		};
-		65344054B751F06161217595F0C49492 /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				785BB6F26B7A4F86E148B2B2855CD764 /* ARReaderKit.h */,
-				6AA5DD5AF00C41101190B0E9C7CA696C /* ARReaderKit.m */,
-			);
-			path = Components;
-			sourceTree = "<group>";
-		};
-		8B9D3CA9130F873436E2353D07EC375E /* Other */ = {
-			isa = PBXGroup;
-			children = (
-				6B0A209725464918178496986370688F /* ARAppDelegate.h */,
-				52D2FE88E2FD42D6E484618EA05324A4 /* ARAppDelegate.m */,
-				7111109EABFAF51A61EF044D0B3DD41F /* ARReaderMacros.h */,
-				6AF189654228F39D4861E4B8853FA01E /* main.m */,
-			);
-			path = Other;
-			sourceTree = "<group>";
-		};
-		60CAD96D75DBC37D18AEC2166359BC73 /* ARReaderWidget */ = {
-			isa = PBXGroup;
-			children = (
-				72AACA0252FF501D379B260DABF32A59 /* Info.plist */,
-				EADA792310F7B11921C65F05EDBEED52 /* TodayViewController.h */,
-				07322FE70FCD2BF595EE7639C23EEE9D /* TodayViewController.m */,
-			);
-			path = ARReaderWidget;
-			sourceTree = "<group>";
-		};
-		BB54D501368624F530E9FF613E08B09C /* ARComposingCategory */ = {
-			isa = PBXGroup;
-			children = (
-				9E2D0C6ED99D3B2C35846702EEFC46AA /* CALayer+Reader.h */,
-				98DE93FA5859EE5392551377DE090A2C /* CALayer+Reader.m */,
-				4F53DEF2AD3F15D277BC81EED0C7A99B /* UIColor+Reader.h */,
-				CB2C05893E0B3E93B3DDC1A4A7C09930 /* UIColor+Reader.m */,
-				BF6A49C1BE51A7C79AA2E5D623FE30E3 /* UIView+Reader.h */,
-				A9AB671F43713C4AE019E2295A75876B /* UIView+Reader.m */,
-			);
-			path = ARComposingCategory;
-			sourceTree = "<group>";
-		};
-		34943E0D3FB95D55D4DBCB39BB65346B = {
-			isa = PBXGroup;
-			children = (
-				5E1BECDDA56863CBD00F1890123E38A0 /* ARReader */,
-				8440CB3D87D765FC45BD8CB16DC03AD1 /* ARReaderTests */,
-				60CAD96D75DBC37D18AEC2166359BC73 /* ARReaderWidget */,
-				C2ADEAB606E1F935C39290BD5C94A6CC /* Frameworks */,
-				59D57D632224E943C7A766668637E7F6 /* Pods */,
-				A9E8337B2B9A490556483669CFD156F2 /* Products */,
-			);
-			sourceTree = "<group>";
-		};
-		A9E8337B2B9A490556483669CFD156F2 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				A05DADED31A67D7239A6822D756DB203 /* ARReader.app */,
-				32D781B14524AD06ACCE6C1172056A7D /* ARReaderTests.xctest */,
-				C4EAEC665110072B2B503858BFF28504 /* ARReaderWidget.appex */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		5E1BECDDA56863CBD00F1890123E38A0 /* ARReader */ = {
-			isa = PBXGroup;
-			children = (
-				B98BA79718ECEEE940C71AD6021A2A31 /* ARComposing */,
-				6DD1A6ED6A5A921E57C2858E16725509 /* ARGCD */,
-				CB9B09A07FF5A797EDDAAB97038FC740 /* Main */,
-				6BBF12FCA3282F8F70B9174F7D61F9DD /* Resources */,
-				57F14654428A555C3C7B4C1DC8597601 /* Supporting Files */,
-			);
-			path = ARReader;
-			sourceTree = "<group>";
-		};
-		57F14654428A555C3C7B4C1DC8597601 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				15781388AE614BA05A9386314C01C76C /* Assets.xcassets */,
-				6D83F54B5FE1A4DDE9F017A93670C8DC /* Info.plist */,
-				1FAC264694BC8354B31EAB8169398E6D /* LaunchScreen.storyboard */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		8440CB3D87D765FC45BD8CB16DC03AD1 /* ARReaderTests */ = {
-			isa = PBXGroup;
-			children = (
-				ED60247575BCFD2680272412F3FEA7C1 /* ARReaderParserTest.m */,
-				13F44AC37ABC8EAAAD4DA002D20999DA /* ARReaderTest.h */,
-				685ED8A11D46D95F05C372650F21A000 /* ARReaderTest.m */,
-				954B9819478131E9AF8D450E626DE817 /* ARRedaerLineManagerTest.m */,
-				841DFFBC93A919A60ABE43744A875022 /* Info.plist */,
-			);
-			path = ARReaderTests;
-			sourceTree = "<group>";
-		};
-		B98BA79718ECEEE940C71AD6021A2A31 /* ARComposing */ = {
-			isa = PBXGroup;
-			children = (
-				05A09A63BE32E39AB790480E9A74C6FC /* ARAsyncLayer */,
-				BB54D501368624F530E9FF613E08B09C /* ARComposingCategory */,
-				22D8E7A31355EFF257E8780967803148 /* ARComposingKit */,
-				BD02AB7F219577CCAF9B329C6F096EFB /* ARComposingUtils */,
-				C659AB8D8243891EB93DC0E2F4A99307 /* ARPageData */,
-				C716BE740B0933EC15C17BD6894C25A9 /* ARPageParser */,
-				AAE6FB6EF95D0C80C15D40FC6A0B6612 /* ARTextComponent */,
-				64F17F9E24B2F1169A9D13CFD6A06569 /* ARComposing.h */,
-			);
-			path = ARComposing;
-			sourceTree = "<group>";
-		};
 		05A09A63BE32E39AB790480E9A74C6FC /* ARAsyncLayer */ = {
 			isa = PBXGroup;
 			children = (
@@ -427,6 +248,194 @@
 			path = ARComposingKit;
 			sourceTree = "<group>";
 		};
+		34943E0D3FB95D55D4DBCB39BB65346B = {
+			isa = PBXGroup;
+			children = (
+				5E1BECDDA56863CBD00F1890123E38A0 /* ARReader */,
+				8440CB3D87D765FC45BD8CB16DC03AD1 /* ARReaderTests */,
+				60CAD96D75DBC37D18AEC2166359BC73 /* ARReaderWidget */,
+				C2ADEAB606E1F935C39290BD5C94A6CC /* Frameworks */,
+				59D57D632224E943C7A766668637E7F6 /* Pods */,
+				A9E8337B2B9A490556483669CFD156F2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		57F14654428A555C3C7B4C1DC8597601 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				15781388AE614BA05A9386314C01C76C /* Assets.xcassets */,
+				6D83F54B5FE1A4DDE9F017A93670C8DC /* Info.plist */,
+				1FAC264694BC8354B31EAB8169398E6D /* LaunchScreen.storyboard */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		59D57D632224E943C7A766668637E7F6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				73F7F567D3130CE8C6C65117ECDFC733 /* Pods-ARReader.debug.xcconfig */,
+				2B737FF5DE75DBCCB5668C090FEAEB76 /* Pods-ARReader.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		5E1BECDDA56863CBD00F1890123E38A0 /* ARReader */ = {
+			isa = PBXGroup;
+			children = (
+				B98BA79718ECEEE940C71AD6021A2A31 /* ARComposing */,
+				6DD1A6ED6A5A921E57C2858E16725509 /* ARGCD */,
+				CB9B09A07FF5A797EDDAAB97038FC740 /* Main */,
+				6BBF12FCA3282F8F70B9174F7D61F9DD /* Resources */,
+				57F14654428A555C3C7B4C1DC8597601 /* Supporting Files */,
+			);
+			path = ARReader;
+			sourceTree = "<group>";
+		};
+		60CAD96D75DBC37D18AEC2166359BC73 /* ARReaderWidget */ = {
+			isa = PBXGroup;
+			children = (
+				72AACA0252FF501D379B260DABF32A59 /* Info.plist */,
+				EADA792310F7B11921C65F05EDBEED52 /* TodayViewController.h */,
+				07322FE70FCD2BF595EE7639C23EEE9D /* TodayViewController.m */,
+			);
+			path = ARReaderWidget;
+			sourceTree = "<group>";
+		};
+		65344054B751F06161217595F0C49492 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				785BB6F26B7A4F86E148B2B2855CD764 /* ARReaderKit.h */,
+				6AA5DD5AF00C41101190B0E9C7CA696C /* ARReaderKit.m */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		6BBF12FCA3282F8F70B9174F7D61F9DD /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				816D5A791E70549200B35474 /* tianzhubian.txt */,
+				D0034A1138FE3FFB319C743E6A90FEFA /* sishen.txt */,
+				B25EE18C30CDFFFBB5D5AC8330F2DEAA /* test.txt */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		6DD1A6ED6A5A921E57C2858E16725509 /* ARGCD */ = {
+			isa = PBXGroup;
+			children = (
+				5365E50BD76AFC22B3BC8CB0D487079B /* ARGCD.h */,
+				91FD85E1977197E62688BCCEBF9B307F /* ARGCDGroup.h */,
+				7ECDBC0EDB536606FBEA006090518AFA /* ARGCDGroup.m */,
+				13E3A398F62DECBE002B619D9F26522E /* ARGCDQueue.h */,
+				7B010B6C3141E3C53931157EDEA3C1F4 /* ARGCDQueue.m */,
+				EDEEEAACB4D7AEE5FFC7FF05AC9EB00D /* ARGCDSemaphore.h */,
+				E56652C259DCEA863BB5EDBDA06199D5 /* ARGCDSemaphore.m */,
+				625C231C1697DEE816819CBD093EF372 /* ARGCDTimer.h */,
+				7931BDF04D0E518786F36F4B7FF35E26 /* ARGCDTimer.m */,
+			);
+			path = ARGCD;
+			sourceTree = "<group>";
+		};
+		7CC355A9BDDFEA9CC69BEAA0C013965D /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				F125173ECADDB1536CC5EEF745FB6441 /* CALayer+Quick.h */,
+				75C29AFC2D399E106199028FB455747F /* CALayer+Quick.m */,
+				817511491E6A8A5E00B3BB51 /* UIResponder+Router.h */,
+				8175114A1E6A8A5E00B3BB51 /* UIResponder+Router.m */,
+				D33DF443F1732D83DBCC6EFF5B7D7C5F /* UIView+Quick.h */,
+				EE7FFFA93D0B3AAF35E02635BD2D4780 /* UIView+Quick.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		8440CB3D87D765FC45BD8CB16DC03AD1 /* ARReaderTests */ = {
+			isa = PBXGroup;
+			children = (
+				ED60247575BCFD2680272412F3FEA7C1 /* ARReaderParserTest.m */,
+				13F44AC37ABC8EAAAD4DA002D20999DA /* ARReaderTest.h */,
+				685ED8A11D46D95F05C372650F21A000 /* ARReaderTest.m */,
+				954B9819478131E9AF8D450E626DE817 /* ARRedaerLineManagerTest.m */,
+				841DFFBC93A919A60ABE43744A875022 /* Info.plist */,
+			);
+			path = ARReaderTests;
+			sourceTree = "<group>";
+		};
+		85E40B3A30DF406ED59483017F77A058 /* ARMediator */ = {
+			isa = PBXGroup;
+			children = (
+				80E600EDC99753CB716164E60A4B7FBE /* ARMediator+Reader.h */,
+				75389FEC37B5474791430E7E3FD6F090 /* ARMediator+Reader.m */,
+				EC10755665E7EC09A10F4A0965E51921 /* ARMediator.h */,
+				637572F02F71CE65CE5A33C1E5902668 /* ARMediator.m */,
+				B310AB09A896FDEC053C4507BE4274A2 /* ARTarget.h */,
+				C74D599D530AF4B0DA26D9CE64E72165 /* ARTarget.m */,
+			);
+			path = ARMediator;
+			sourceTree = "<group>";
+		};
+		8B9D3CA9130F873436E2353D07EC375E /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				6B0A209725464918178496986370688F /* ARAppDelegate.h */,
+				52D2FE88E2FD42D6E484618EA05324A4 /* ARAppDelegate.m */,
+				7111109EABFAF51A61EF044D0B3DD41F /* ARReaderMacros.h */,
+				6AF189654228F39D4861E4B8853FA01E /* main.m */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		A9E8337B2B9A490556483669CFD156F2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A05DADED31A67D7239A6822D756DB203 /* ARReader.app */,
+				32D781B14524AD06ACCE6C1172056A7D /* ARReaderTests.xctest */,
+				C4EAEC665110072B2B503858BFF28504 /* ARReaderWidget.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AAE6FB6EF95D0C80C15D40FC6A0B6612 /* ARTextComponent */ = {
+			isa = PBXGroup;
+			children = (
+				E77417B24A44D78FC9512E526DCBA1AA /* ARTextLayout.h */,
+				D75FEC0A34392304B8E4D78CD99E320E /* ARTextLayout.m */,
+				A6153FB18E547F4B111FD6E99B109DD8 /* ARTextLine.h */,
+				E1105EC449FB4F577129797CFA11DBA8 /* ARTextLine.m */,
+				1DB88E4BC2CAC132CCD0684523B244DC /* ARTextOutput.h */,
+				8C8552683B06E9F8B18B4BB3E76ADFB8 /* ARTextOutput.m */,
+			);
+			path = ARTextComponent;
+			sourceTree = "<group>";
+		};
+		B98BA79718ECEEE940C71AD6021A2A31 /* ARComposing */ = {
+			isa = PBXGroup;
+			children = (
+				05A09A63BE32E39AB790480E9A74C6FC /* ARAsyncLayer */,
+				BB54D501368624F530E9FF613E08B09C /* ARComposingCategory */,
+				22D8E7A31355EFF257E8780967803148 /* ARComposingKit */,
+				BD02AB7F219577CCAF9B329C6F096EFB /* ARComposingUtils */,
+				C659AB8D8243891EB93DC0E2F4A99307 /* ARPageData */,
+				C716BE740B0933EC15C17BD6894C25A9 /* ARPageParser */,
+				AAE6FB6EF95D0C80C15D40FC6A0B6612 /* ARTextComponent */,
+				64F17F9E24B2F1169A9D13CFD6A06569 /* ARComposing.h */,
+			);
+			path = ARComposing;
+			sourceTree = "<group>";
+		};
+		BB54D501368624F530E9FF613E08B09C /* ARComposingCategory */ = {
+			isa = PBXGroup;
+			children = (
+				9E2D0C6ED99D3B2C35846702EEFC46AA /* CALayer+Reader.h */,
+				98DE93FA5859EE5392551377DE090A2C /* CALayer+Reader.m */,
+				4F53DEF2AD3F15D277BC81EED0C7A99B /* UIColor+Reader.h */,
+				CB2C05893E0B3E93B3DDC1A4A7C09930 /* UIColor+Reader.m */,
+				BF6A49C1BE51A7C79AA2E5D623FE30E3 /* UIView+Reader.h */,
+				A9AB671F43713C4AE019E2295A75876B /* UIView+Reader.m */,
+			);
+			path = ARComposingCategory;
+			sourceTree = "<group>";
+		};
 		BD02AB7F219577CCAF9B329C6F096EFB /* ARComposingUtils */ = {
 			isa = PBXGroup;
 			children = (
@@ -440,6 +449,15 @@
 				7B4478F54F36FB085859C4D95AB2A670 /* ARTextUtilities.m */,
 			);
 			path = ARComposingUtils;
+			sourceTree = "<group>";
+		};
+		C2ADEAB606E1F935C39290BD5C94A6CC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EF726688590221AC1DA818DFCB2D2DAC /* NotificationCenter.framework */,
+				FBE9C9E5807B8A4F77EAD64FE3E46872 /* libPods-ARReader.a */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		C659AB8D8243891EB93DC0E2F4A99307 /* ARPageData */ = {
@@ -460,31 +478,21 @@
 			path = ARPageParser;
 			sourceTree = "<group>";
 		};
-		6BBF12FCA3282F8F70B9174F7D61F9DD /* Resources */ = {
+		CB9B09A07FF5A797EDDAAB97038FC740 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				D0034A1138FE3FFB319C743E6A90FEFA /* sishen.txt */,
-				B25EE18C30CDFFFBB5D5AC8330F2DEAA /* test.txt */,
+				85E40B3A30DF406ED59483017F77A058 /* ARMediator */,
+				7CC355A9BDDFEA9CC69BEAA0C013965D /* Categories */,
+				65344054B751F06161217595F0C49492 /* Components */,
+				8B9D3CA9130F873436E2353D07EC375E /* Other */,
+				348F1A6105CA8CB4B1DC2657DEC830F3 /* ARGCDCenter.h */,
+				C79075C033ADED46276E55A2E68123B6 /* ARGCDCenter.m */,
+				3FE4101ECAE96AD372FA0DD05143AF39 /* ARReaderCenter.h */,
+				71BB2CD797C8263563D4424FBA73FA89 /* ARReaderCenter.m */,
+				9AD6E360D91935CFC08DFBFA44C759C2 /* ARReaderDataSource.h */,
+				16B97067A07FFF763BAA8C638EC96E6D /* ARReaderDataSource.m */,
 			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
-		C2ADEAB606E1F935C39290BD5C94A6CC /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				EF726688590221AC1DA818DFCB2D2DAC /* NotificationCenter.framework */,
-				FBE9C9E5807B8A4F77EAD64FE3E46872 /* libPods-ARReader.a */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		59D57D632224E943C7A766668637E7F6 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				73F7F567D3130CE8C6C65117ECDFC733 /* Pods-ARReader.debug.xcconfig */,
-				2B737FF5DE75DBCCB5668C090FEAEB76 /* Pods-ARReader.release.xcconfig */,
-			);
-			name = Pods;
+			path = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -506,6 +514,24 @@
 			productName = ARReaderWidget;
 			productReference = C4EAEC665110072B2B503858BFF28504 /* ARReaderWidget.appex */;
 			productType = "com.apple.product-type.app-extension";
+		};
+		23318F92EDF56B7FDEF28C7A29912D77 /* ARReaderTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 10FDD172F24ECC5A1A4EBF883240D468 /* Build configuration list for PBXNativeTarget "ARReaderTests" */;
+			buildPhases = (
+				5FC0CE74A53FA95EEDDDC7D532330B00 /* Sources */,
+				2F26DCA637BA16381DD982F51E4D7425 /* Frameworks */,
+				E725B75209A9011B6C7E4CC2B2EBAE98 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				48EDF5056568F1417F7602B5710D068D /* PBXTargetDependency */,
+			);
+			name = ARReaderTests;
+			productName = ARReaderTests;
+			productReference = 32D781B14524AD06ACCE6C1172056A7D /* ARReaderTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		B106A3BFAD171C7AB1439686667E3DA7 /* ARReader */ = {
 			isa = PBXNativeTarget;
@@ -529,24 +555,6 @@
 			productReference = A05DADED31A67D7239A6822D756DB203 /* ARReader.app */;
 			productType = "com.apple.product-type.application";
 		};
-		23318F92EDF56B7FDEF28C7A29912D77 /* ARReaderTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 10FDD172F24ECC5A1A4EBF883240D468 /* Build configuration list for PBXNativeTarget "ARReaderTests" */;
-			buildPhases = (
-				5FC0CE74A53FA95EEDDDC7D532330B00 /* Sources */,
-				2F26DCA637BA16381DD982F51E4D7425 /* Frameworks */,
-				E725B75209A9011B6C7E4CC2B2EBAE98 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				48EDF5056568F1417F7602B5710D068D /* PBXTargetDependency */,
-			);
-			name = ARReaderTests;
-			productName = ARReaderTests;
-			productReference = 32D781B14524AD06ACCE6C1172056A7D /* ARReaderTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -561,15 +569,15 @@
 						DevelopmentTeam = ZR4YN8UXKQ;
 						ProvisioningStyle = Automatic;
 					};
-					B106A3BFAD171C7AB1439686667E3DA7 = {
-						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = ZR4YN8UXKQ;
-						ProvisioningStyle = Automatic;
-					};
 					23318F92EDF56B7FDEF28C7A29912D77 = {
 						CreatedOnToolsVersion = 8.2.1;
 						ProvisioningStyle = Automatic;
 						TestTargetID = B106A3BFAD171C7AB1439686667E3DA7;
+					};
+					B106A3BFAD171C7AB1439686667E3DA7 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = ZR4YN8UXKQ;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -605,6 +613,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				816D5A7A1E70549200B35474 /* tianzhubian.txt in Resources */,
 				8F91E4F00AE37BA815F4634CEE15B18F /* Assets.xcassets in Resources */,
 				15638B5B3035784D41927C08D1C645F9 /* LaunchScreen.storyboard in Resources */,
 				AC04805BE6A7E32A385A38AF77411BE2 /* sishen.txt in Resources */,
@@ -622,21 +631,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		C1F64F77A39C17097308930915F86434 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
 		2BA85D139C01AC970DA88FE9A152A584 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -667,6 +661,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ARReader/Pods-ARReader-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		C1F64F77A39C17097308930915F86434 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -675,6 +684,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				27BA2FCCDBCA3BB3AD51053C3D1D33C2 /* TodayViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5FC0CE74A53FA95EEDDDC7D532330B00 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F9F7B0F875DDA6764792844A150286C /* ARReaderParserTest.m in Sources */,
+				931F5C259385AB07351BB71675C8CB8C /* ARReaderTest.m in Sources */,
+				019B127DE7BEB9236528439EBE14BE95 /* ARRedaerLineManagerTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -703,6 +722,7 @@
 				AB471C3F3DB9C2F27E009C6FFC6B2622 /* ARReaderKit.m in Sources */,
 				C31F27741C938860902B1589D8C77FA5 /* ARSentinel.m in Sources */,
 				9D046D662710ACEFFA4942636095A69B /* ARTarget.m in Sources */,
+				8175114B1E6A8A5E00B3BB51 /* UIResponder+Router.m in Sources */,
 				93E6616772A4780D1FCEE161A81D091A /* ARTextCursor.m in Sources */,
 				C2DEB514EE758AC50761114F2F3706EF /* ARTextEffectWindow.m in Sources */,
 				31B13BD0439799866EEB40774536B5ED /* ARTextLayout.m in Sources */,
@@ -718,16 +738,6 @@
 				EA73FB055BCEE4F0D64F42C848E1AB58 /* UIView+Quick.m in Sources */,
 				A2B9E69667A9C152339C84C648D7C005 /* UIView+Reader.m in Sources */,
 				453D499478455982570103C6605D1292 /* main.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5FC0CE74A53FA95EEDDDC7D532330B00 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4F9F7B0F875DDA6764792844A150286C /* ARReaderParserTest.m in Sources */,
-				931F5C259385AB07351BB71675C8CB8C /* ARReaderTest.m in Sources */,
-				019B127DE7BEB9236528439EBE14BE95 /* ARRedaerLineManagerTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -758,6 +768,18 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		011E211E7238AC2C524C1E6568ED0019 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = ZR4YN8UXKQ;
+				INFOPLIST_FILE = ARReaderWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.archy.ARReader.ARReaderWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 		10BE5D6894900E485748AD688394D97C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -770,15 +792,42 @@
 			};
 			name = Debug;
 		};
-		011E211E7238AC2C524C1E6568ED0019 /* Release */ = {
+		1AEFC8388C36331697809CF287769F9A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DEVELOPMENT_TEAM = ZR4YN8UXKQ;
-				INFOPLIST_FILE = ARReaderWidget/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.archy.ARReader.ARReaderWidget;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = ARReaderTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.archy.ARReaderTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ARReader.app/ARReader";
+			};
+			name = Release;
+		};
+		4E958D1BA3FA43D59EE766E2A791C513 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = ARReaderTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.archy.ARReaderTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ARReader.app/ARReader";
+			};
+			name = Debug;
+		};
+		63C1A517B6B4E09F01B480073AAD1AAF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2B737FF5DE75DBCCB5668C090FEAEB76 /* Pods-ARReader.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = ZR4YN8UXKQ;
+				ENABLE_BITCODE = YES;
+				INFOPLIST_FILE = ARReader/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.archy.ARReader;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WARNING_CFLAGS = "";
 			};
 			name = Release;
 		};
@@ -830,6 +879,21 @@
 			};
 			name = Debug;
 		};
+		F02517455CABF209CC9F754AC68E9E06 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 73F7F567D3130CE8C6C65117ECDFC733 /* Pods-ARReader.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = ZR4YN8UXKQ;
+				ENABLE_BITCODE = YES;
+				INFOPLIST_FILE = ARReader/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.archy.ARReader;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WARNING_CFLAGS = "";
+			};
+			name = Debug;
+		};
 		F8BC832045BDFC7F41C971923A3412A4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -872,70 +936,17 @@
 			};
 			name = Release;
 		};
-		F02517455CABF209CC9F754AC68E9E06 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 73F7F567D3130CE8C6C65117ECDFC733 /* Pods-ARReader.debug.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = ZR4YN8UXKQ;
-				ENABLE_BITCODE = YES;
-				INFOPLIST_FILE = ARReader/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.archy.ARReader;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				WARNING_CFLAGS = "";
-			};
-			name = Debug;
-		};
-		63C1A517B6B4E09F01B480073AAD1AAF /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2B737FF5DE75DBCCB5668C090FEAEB76 /* Pods-ARReader.release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = ZR4YN8UXKQ;
-				ENABLE_BITCODE = YES;
-				INFOPLIST_FILE = ARReader/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.archy.ARReader;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				WARNING_CFLAGS = "";
-			};
-			name = Release;
-		};
-		4E958D1BA3FA43D59EE766E2A791C513 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = ARReaderTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.archy.ARReaderTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ARReader.app/ARReader";
-			};
-			name = Debug;
-		};
-		1AEFC8388C36331697809CF287769F9A /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = ARReaderTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.archy.ARReaderTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ARReader.app/ARReader";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E25A1B999811C6456ED5281BD0FC1376 /* Build configuration list for PBXNativeTarget "ARReaderWidget" */ = {
+		10FDD172F24ECC5A1A4EBF883240D468 /* Build configuration list for PBXNativeTarget "ARReaderTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				10BE5D6894900E485748AD688394D97C /* Debug */,
-				011E211E7238AC2C524C1E6568ED0019 /* Release */,
+				4E958D1BA3FA43D59EE766E2A791C513 /* Debug */,
+				1AEFC8388C36331697809CF287769F9A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		926838BD4BE65E89587A6C2B711ED0F8 /* Build configuration list for PBXProject "ARReader" */ = {
 			isa = XCConfigurationList;
@@ -955,11 +966,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		10FDD172F24ECC5A1A4EBF883240D468 /* Build configuration list for PBXNativeTarget "ARReaderTests" */ = {
+		E25A1B999811C6456ED5281BD0FC1376 /* Build configuration list for PBXNativeTarget "ARReaderWidget" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4E958D1BA3FA43D59EE766E2A791C513 /* Debug */,
-				1AEFC8388C36331697809CF287769F9A /* Release */,
+				10BE5D6894900E485748AD688394D97C /* Debug */,
+				011E211E7238AC2C524C1E6568ED0019 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

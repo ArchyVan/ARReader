@@ -21,7 +21,37 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self observer];
 }
+
+- (void)observer {
+    CFRunLoopObserverRef observer = CFRunLoopObserverCreateWithHandler(CFAllocatorGetDefault(), kCFRunLoopAllActivities, YES, 0, ^(CFRunLoopObserverRef observer, CFRunLoopActivity activity) {
+        switch (activity) {
+            case kCFRunLoopEntry:
+                NSLog(@"即将被唤醒");
+                break;
+            case kCFRunLoopBeforeTimers:
+                NSLog(@"即将处理定时器事件");
+                break;
+            case kCFRunLoopBeforeSources:
+                NSLog(@"即将处理输入源事件");
+                break;
+            case kCFRunLoopBeforeWaiting:
+                NSLog(@"即将进入休眠");
+                break;
+            case kCFRunLoopAfterWaiting:
+                NSLog(@"休眠结束");
+                break;
+            case kCFRunLoopExit:
+                NSLog(@"运行循环退出");
+                break;
+            default:
+                break;
+        }
+    });
+    CFRunLoopAddObserver(CFRunLoopGetCurrent(),observer, kCFRunLoopDefaultMode);
+}
+
 
 #pragma mark - Lazy Init
 

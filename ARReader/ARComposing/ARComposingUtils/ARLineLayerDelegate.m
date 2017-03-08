@@ -82,7 +82,7 @@
         
         NSInteger location = range.location;
         NSInteger length = range.length;
-        NSString *lineString = [self.pageContent substringWithRange:NSMakeRange(location, length)];
+        NSString *lineString = [self.pageLayout.content substringWithRange:NSMakeRange(location, length)];
         if ([lineString isEqualToString:@"\n"]) {
             continue;
         }
