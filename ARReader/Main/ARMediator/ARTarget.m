@@ -14,8 +14,6 @@
 
 #import "UIView+Quick.h"
 
-#import <QMUIKit/QMUIKit.h>
-
 typedef void (^ARUrlRouterCallbackBlock)(NSDictionary *info);
 
 @implementation Target_Reader
@@ -38,21 +36,21 @@ typedef void (^ARUrlRouterCallbackBlock)(NSDictionary *info);
 
 - (id)Action_showAlert:(NSDictionary *)params
 {
-    QMUIAlertAction *cancelAction = [QMUIAlertAction actionWithTitle:@"cancel" style:QMUIAlertActionStyleCancel handler:^(QMUIAlertAction *action) {
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
         ARUrlRouterCallbackBlock callback = params[@"cancelAction"];
         if (callback) {
             callback(@{@"alertAction":action});
         }
     }];
     
-    QMUIAlertAction *confirmAction = [QMUIAlertAction actionWithTitle:@"confirm" style:QMUIAlertActionStyleDefault handler:^(QMUIAlertAction * _Nonnull action) {
+    UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"confirm" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         ARUrlRouterCallbackBlock callback = params[@"confirmAction"];
         if (callback) {
             callback(@{@"alertAction":action});
         }
     }];
     
-    QMUIAlertController *alertController = [QMUIAlertController alertControllerWithTitle:@"Reader" message:params[@"message"] preferredStyle:QMUIAlertControllerStyleAlert];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Reader" message:params[@"message"] preferredStyle:UIAlertControllerStyleAlert];
     [alertController addAction:cancelAction];
     [alertController addAction:confirmAction];
     [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:alertController animated:YES completion:nil];

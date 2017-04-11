@@ -144,9 +144,9 @@
             selectRect = CGRectUnion(selectRect, lineRect);
         }
         else if (startPosition < range.location && [self isPosition:endPosition inRange:range]) {
-            CGFloat ascent, descent, leading, width, offset;
+            CGFloat ascent, descent, leading,offset;
             offset = CTLineGetOffsetForStringIndex(line, endPosition, NULL);
-            width = CTLineGetTypographicBounds(line, &ascent, &descent, &leading);
+            CTLineGetTypographicBounds(line, &ascent, &descent, &leading);
             CGRect lineRect = CGRectMake(linePoint.x, linePoint.y - descent, offset, ascent + descent);
             selectRect = CGRectUnion(selectRect, lineRect);
         }
@@ -171,10 +171,7 @@
     if (!lines) {
         return NSMakeRange(0, 0);
     }
-    
-    CGAffineTransform transform =  CGAffineTransformMakeTranslation(0, view.bounds.size.height);
-    transform = CGAffineTransformScale(transform, 1.f, -1.f);
-    
+        
     CFIndex count = CFArrayGetCount(lines);
     CGPoint origins[count];
     CTFrameGetLineOrigins(textFrame, CFRangeMake(0, 0), origins);

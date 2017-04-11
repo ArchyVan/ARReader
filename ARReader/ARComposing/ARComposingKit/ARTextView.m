@@ -429,21 +429,18 @@ static void ARTextDrawText(ARTextLayout *layout,CGContextRef context) {
             [self fillSelectionAreaInRect:lineRect];
         } // 2.2 如果 start在line前，end在line后，则填充整个区域
         else if (_selectionStartPosition < range.location && _selectionEndPosition >= range.location + range.length) {
-            CGFloat ascent, descent, leading, width;
+            CGFloat ascent, descent, width;
             ascent = line.ascent;
             descent = line.descent;
-            leading = line.leading;
             width = line.width;
             CGRect lineRect = CGRectMake(line.position.x, line.position.y - descent, width, ascent + descent);
             [self fillSelectionAreaInRect:lineRect];
         } // 2.3 如果start在line前，end在line中，则填充end前面的区域,break
         else if (_selectionStartPosition < range.location && [self.composingUtils isPosition:_selectionEndPosition inRange:range]) {
-            CGFloat ascent, descent, leading, width, offset;
+            CGFloat ascent, descent, offset;
             offset = CTLineGetOffsetForStringIndex(line.CTLine, _selectionEndPosition, NULL);
-            width = line.width;
             ascent = line.ascent;
             descent = line.descent;
-            leading = line.leading;
             CGRect lineRect = CGRectMake(line.position.x, line.position.y - descent, offset, ascent + descent);
             [self fillSelectionAreaInRect:lineRect];
         }
@@ -568,8 +565,7 @@ static void ARTextDrawText(ARTextLayout *layout,CGContextRef context) {
     }
 }
 
-- (void)update
-{
+- (void)update {
     self.needUpdate = NO;
     [self configAttributes];
     [self composingFrame];
@@ -659,6 +655,7 @@ static void ARTextDrawText(ARTextLayout *layout,CGContextRef context) {
     CFRange range = CTFrameGetVisibleStringRange(frame);
     if (range.length == self.pageData.pageDisplayContent.length) {
     } else {
+        CFRelease(framesetter);
         framesetter  = CTFramesetterCreateWithAttributedString((__bridge CFAttributedStringRef)[attributedString attributedSubstringFromRange:NSMakeRange(0, self.pageData.pageDisplayContent.length)]);
         frame = CTFramesetterCreateFrame(framesetter, CFRangeMake(0, 0), path, NULL);
     }
@@ -671,8 +668,7 @@ static void ARTextDrawText(ARTextLayout *layout,CGContextRef context) {
     CFRelease(path);
 }
 
-- (void)showCursorView
-{
+- (void)showCursorView {
     [self addSubview:self.topCursorView];
     [self addSubview:self.bottomCursorView];
 }

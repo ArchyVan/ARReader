@@ -67,10 +67,7 @@
     if (exStartLocation < 0 || exEndLocation > self.pageContent.length) {
         return;
     }
-    
-    CGAffineTransform transform =  CGAffineTransformMakeTranslation(0, self.composingParser.pageSize.height);
-    transform = CGAffineTransformScale(transform, 1.f, -1.f);
-    
+        
     CGFloat underlineSpacing = 0;
     if (self.underLineSpacing != 0) {
         underlineSpacing = self.underLineSpacing;

@@ -1,12 +1,12 @@
 Pod::Spec.new do |s|
   s.name         = 'ARComposing'
   s.summary      = 'Quick Layout Engine.'
-  s.version      = '0.0.1'
+  s.version      = '0.0.2'
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
   s.authors      = { 'ArchyVan' => '2440938213@qq.com' }
   s.homepage     = 'https://github.com/ArchyVan/ARReader'
-  s.platform     = :ios, '6.0'
-  s.ios.deployment_target = '6.0'
+  s.platform     = :ios, '8.0'
+  s.ios.deployment_target = '8.0'
   s.source       = { :git => 'https://github.com/ArchyVan/ARReader.git', :tag => s.version.to_s }
   
   s.requires_arc = true

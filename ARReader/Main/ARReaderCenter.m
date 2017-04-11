@@ -24,8 +24,6 @@
 
 #import "ARBookIndicator.h"
 
-#import <QMUIKit/QMUIKit.h>
-
 @interface ARReaderCenter () <UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, strong) ARReaderNavigation *readerNavigation;
