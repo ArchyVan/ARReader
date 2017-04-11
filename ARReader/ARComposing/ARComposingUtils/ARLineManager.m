@@ -48,14 +48,13 @@
 
 - (NSArray *)removeLineWithRange:(NSRange)range
 {
-    NSMutableArray *newLineArray = [NSMutableArray array];
     if (!self.lineArray || self.lineArray.count == 0) {
         return nil;
     }
     if (range.length == range.location && range.length == 0) {
         return self.lineArray;
     }
-    newLineArray = [self.lineArray mutableCopy];
+    NSMutableArray *newLineArray = [self.lineArray mutableCopy];
     for (NSValue *lineRange in self.lineArray) {
         NSRange intersectionRange = NSIntersectionRange(range, lineRange.rangeValue);
         if (intersectionRange.length == 0 && intersectionRange.location == 0) {
